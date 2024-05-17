@@ -5,7 +5,11 @@ public class MotorPHPortal {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         
-        MainFrame mainFrame = new MainFrame();
+        
+        //LaunchPage lauchPage = new LaunchPage();
+        
+        //MainFrame mainFrame = new MainFrame();
+        LoginPage loginPage = new LoginPage();
         
     }
 }
