@@ -22,8 +22,8 @@ public class MainFrame extends JFrame implements ActionListener
     private JPanel loginPanel, sideBar, headerPanel;
     private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton;
     private JLabel lblHeader;
-    private Color primaryColor, secondaryColor, accentColor, primaryTextColor, secondaryTextColor, inputTextColor;
-    private Font headerFont, mainFont, secondaryFont;
+
+    Resources rsc = new Resources();
     
     
     public MainFrame()
@@ -59,33 +59,6 @@ public class MainFrame extends JFrame implements ActionListener
         };
         // ********** Mouse Function ********** //
         
-        // ********** Dimensions, Colors, Fonts ********** //
-        Dimension fullScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int fullScreenWidth = fullScreenSize.width;
-        int fullScreenHeight = fullScreenSize.height;
-        
-        double ratio = 1.618;
-        int midX = (fullScreenWidth)/2;
-        int midY = (fullScreenHeight)/2;
-        int sideBarWidth = (int)(fullScreenWidth / ratio)/4;
-        int sideBarHeight = fullScreenHeight;
-        int navButtonWidth = sideBarWidth;
-        int navButtonHeight = (sideBarHeight/100)*10;
-        int infoPanelWidth = fullScreenWidth-sideBarWidth;
-        int inforPanelHeight = (fullScreenHeight/100)*5;
-        
-        primaryColor = new Color(0x12202b);
-        secondaryColor = new Color(0x192734);
-        accentColor = new Color(0x22303c);
-        primaryTextColor = new Color(0xffffff);
-        secondaryTextColor = new Color(0x8899a6);
-        inputTextColor = new Color(0x28231d);
-        
-        headerFont = new Font("Sans Serif",Font.BOLD,20);
-        mainFont = new Font("Sans Serif",Font.PLAIN,16);
-        secondaryFont = new Font("Sans Serif",Font.PLAIN,14);
-        // ********** Dimensions, Colors, Fonts ********** //
-        
         
         
         
@@ -94,28 +67,28 @@ public class MainFrame extends JFrame implements ActionListener
         this.setResizable(false);
         this.setLayout(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setSize(fullScreenWidth, fullScreenHeight);
-        this.getContentPane().setBackground(primaryColor);
+        this.setSize(rsc.FullscreenWidth(), rsc.FullscreenHeight());
+        this.getContentPane().setBackground(rsc.PrimaryColor());
         this.setUndecorated(true);
         
         
         
         
         sideBar = new JPanel();
-        sideBar.setBackground(secondaryColor);
-        sideBar.setBounds(0, 0, sideBarWidth, sideBarHeight);
+        sideBar.setBackground(rsc.SecondaryColor());
+        sideBar.setBounds(0, 0, rsc.SideBarWidth(), rsc.SideBarHeight());
         sideBar.setLayout(null);
         
         headerPanel = new JPanel();
-        headerPanel.setBackground(primaryColor);
-        headerPanel.setBounds(sideBarWidth, 0, infoPanelWidth, inforPanelHeight*3);
+        headerPanel.setBackground(rsc.PrimaryColor());
+        headerPanel.setBounds(rsc.SideBarWidth(), 0, rsc.InfoPanelWidth(), rsc.InfoPanelHeight()*3);
         headerPanel.setLayout(new BorderLayout());
         
         
         lblHeader = new JLabel();
         lblHeader.setText("Welcome to MotorPH Dashboard Portal");
-        lblHeader.setFont(headerFont);
-        lblHeader.setForeground(primaryTextColor);
+        lblHeader.setFont(rsc.HeaderFont());
+        lblHeader.setForeground(rsc.PrimaryTextColor());
         lblHeader.setHorizontalAlignment(JLabel.CENTER);
         lblHeader.setVerticalAlignment(JLabel.CENTER);
         //lblHeader.setBounds(infoPanelWidth/2, (inforPanelHeight*3)/2, 0, 0);
@@ -123,62 +96,62 @@ public class MainFrame extends JFrame implements ActionListener
         
         headerButton = new JButton("Motor PH");
         headerButton.addActionListener(this);
-        headerButton.setBackground(primaryColor);
-        headerButton.setForeground(primaryTextColor);
-        headerButton.setFont(headerFont);
+        headerButton.setBackground(rsc.PrimaryColor());
+        headerButton.setForeground(rsc.PrimaryTextColor());
+        headerButton.setFont(rsc.HeaderFont());
         headerButton.setBorder(null);
         headerButton.setFocusable(false);
-        headerButton.setBounds(0, 0, navButtonWidth, navButtonHeight);
+        headerButton.setBounds(0, 0, rsc.NavButtonWidth(), rsc.NavButtonHeight());
         headerButton.addMouseListener(handPointer);
         
         timeInOutButton = new JButton("Time-in Time-out");
         timeInOutButton.addActionListener(this);
-        timeInOutButton.setBackground(secondaryColor);
-        timeInOutButton.setForeground(primaryTextColor);
-        timeInOutButton.setFont(mainFont);
+        timeInOutButton.setBackground(rsc.SecondaryColor());
+        timeInOutButton.setForeground(rsc.PrimaryTextColor());
+        timeInOutButton.setFont(rsc.MainFont());
         timeInOutButton.setBorder(null);
         timeInOutButton.setFocusable(false);
-        timeInOutButton.setBounds(0, sideBarHeight-(navButtonHeight*10), navButtonWidth, navButtonHeight);
+        timeInOutButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*10), rsc.NavButtonWidth(), rsc.NavButtonHeight());
         timeInOutButton.addMouseListener(handPointer);
         
         profileButton = new JButton("My Profile");
         profileButton.addActionListener(this);
-        profileButton.setBackground(secondaryColor);
-        profileButton.setForeground(primaryTextColor);
-        profileButton.setFont(mainFont);
+        profileButton.setBackground(rsc.SecondaryColor());
+        profileButton.setForeground(rsc.PrimaryTextColor());
+        profileButton.setFont(rsc.MainFont());
         profileButton.setBorder(null);
         profileButton.setFocusable(false);
-        profileButton.setBounds(0, sideBarHeight-(navButtonHeight*9), navButtonWidth, navButtonHeight);
+        profileButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*9), rsc.NavButtonWidth(), rsc.NavButtonHeight());
         profileButton.addMouseListener(handPointer);
         
         timeButton = new JButton("View Time Logs");
         timeButton.addActionListener(this);
-        timeButton.setBackground(secondaryColor);
-        timeButton.setForeground(primaryTextColor);
-        timeButton.setFont(mainFont);
+        timeButton.setBackground(rsc.SecondaryColor());
+        timeButton.setForeground(rsc.PrimaryTextColor());
+        timeButton.setFont(rsc.MainFont());
         timeButton.setBorder(null);
         timeButton.setFocusable(false);
-        timeButton.setBounds(0, sideBarHeight-(navButtonHeight*8), navButtonWidth, navButtonHeight);
+        timeButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*8), rsc.NavButtonWidth(), rsc.NavButtonHeight());
         timeButton.addMouseListener(handPointer);
         
         salaryButton = new JButton("View Salary");
         salaryButton.addActionListener(this);
-        salaryButton.setBackground(secondaryColor);
-        salaryButton.setForeground(primaryTextColor);
-        salaryButton.setFont(mainFont);
+        salaryButton.setBackground(rsc.SecondaryColor());
+        salaryButton.setForeground(rsc.PrimaryTextColor());
+        salaryButton.setFont(rsc.MainFont());
         salaryButton.setBorder(null);
         salaryButton.setFocusable(false);
-        salaryButton.setBounds(0, sideBarHeight-(navButtonHeight*7), navButtonWidth, navButtonHeight);
+        salaryButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*7), rsc.NavButtonWidth(), rsc.NavButtonHeight());
         salaryButton.addMouseListener(handPointer);
         
         exitButton = new JButton("Exit Portal");
         exitButton.addActionListener(this);
-        exitButton.setBackground(secondaryColor);
-        exitButton.setForeground(primaryTextColor);
-        exitButton.setFont(mainFont);
+        exitButton.setBackground(rsc.SecondaryColor());
+        exitButton.setForeground(rsc.PrimaryTextColor());
+        exitButton.setFont(rsc.MainFont());
         exitButton.setBorder(null);
         exitButton.setFocusable(false);
-        exitButton.setBounds(0, sideBarHeight-navButtonHeight, navButtonWidth, navButtonHeight);
+        exitButton.setBounds(0, rsc.SideBarHeight()-rsc.NavButtonHeight(), rsc.NavButtonWidth(), rsc.NavButtonHeight());
         exitButton.addMouseListener(handPointer);
         
         
@@ -210,55 +183,55 @@ public class MainFrame extends JFrame implements ActionListener
         }
         else if(e.getSource()==headerButton)
         {
-            headerButton.setBackground(primaryColor);
-            timeInOutButton.setBackground(secondaryColor);
-            profileButton.setBackground(secondaryColor);
-            timeButton.setBackground(secondaryColor);
-            salaryButton.setBackground(secondaryColor);
+            headerButton.setBackground(rsc.PrimaryColor());
+            timeInOutButton.setBackground(rsc.SecondaryColor());
+            profileButton.setBackground(rsc.SecondaryColor());
+            timeButton.setBackground(rsc.SecondaryColor());
+            salaryButton.setBackground(rsc.SecondaryColor());
             
             lblHeader.setText("Welcome to MotorPH Dashboard Portal");
             
         }
         else if(e.getSource()==timeInOutButton)
         {
-            headerButton.setBackground(secondaryColor);
-            timeInOutButton.setBackground(primaryColor);
-            profileButton.setBackground(secondaryColor);
-            timeButton.setBackground(secondaryColor);
-            salaryButton.setBackground(secondaryColor);
+            headerButton.setBackground(rsc.SecondaryColor());
+            timeInOutButton.setBackground(rsc.PrimaryColor());
+            profileButton.setBackground(rsc.SecondaryColor());
+            timeButton.setBackground(rsc.SecondaryColor());
+            salaryButton.setBackground(rsc.SecondaryColor());
             
             lblHeader.setText("Time-In Time-Out Page");
             
         }
         else if(e.getSource()==profileButton)
         {
-            headerButton.setBackground(secondaryColor);
-            timeInOutButton.setBackground(secondaryColor);
-            profileButton.setBackground(primaryColor);
-            timeButton.setBackground(secondaryColor);
-            salaryButton.setBackground(secondaryColor);
+            headerButton.setBackground(rsc.SecondaryColor());
+            timeInOutButton.setBackground(rsc.SecondaryColor());
+            profileButton.setBackground(rsc.PrimaryColor());
+            timeButton.setBackground(rsc.SecondaryColor());
+            salaryButton.setBackground(rsc.SecondaryColor());
             
             lblHeader.setText("Profile Page");
             
         }
         else if(e.getSource()==timeButton)
         {
-            headerButton.setBackground(secondaryColor);
-            timeInOutButton.setBackground(secondaryColor);
-            profileButton.setBackground(secondaryColor);
-            timeButton.setBackground(primaryColor);
-            salaryButton.setBackground(secondaryColor);
+            headerButton.setBackground(rsc.SecondaryColor());
+            timeInOutButton.setBackground(rsc.SecondaryColor());
+            profileButton.setBackground(rsc.SecondaryColor());
+            timeButton.setBackground(rsc.PrimaryColor());
+            salaryButton.setBackground(rsc.SecondaryColor());
             
             lblHeader.setText("View Time Logs Page");
             
         }
         else if(e.getSource()==salaryButton)
         {
-            headerButton.setBackground(secondaryColor);
-            timeInOutButton.setBackground(secondaryColor);
-            profileButton.setBackground(secondaryColor);
-            timeButton.setBackground(secondaryColor);
-            salaryButton.setBackground(primaryColor);
+            headerButton.setBackground(rsc.SecondaryColor());
+            timeInOutButton.setBackground(rsc.SecondaryColor());
+            profileButton.setBackground(rsc.SecondaryColor());
+            timeButton.setBackground(rsc.SecondaryColor());
+            salaryButton.setBackground(rsc.PrimaryColor());
             
             lblHeader.setText("View Salary Page");
             
