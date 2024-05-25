@@ -12,7 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import portal.motorphportal.DBoperation;
 
 
 public class LoginPage extends JFrame implements ActionListener
@@ -20,10 +22,12 @@ public class LoginPage extends JFrame implements ActionListener
     
     private JButton loginButton;
     private JLabel lblLoginMessage, lblUsername, lblPassword;
-    private JTextField usernameTF, passwordTF;
+    private JTextField usernameTF;
+    private JPasswordField passwordTF;
     private JPanel loginFocusPanel, loginButtonContainer, usernameTFContainer, passwordTFContainer;
     private Color primaryColor, secondaryColor, accentColor, primaryTextColor, secondaryTextColor, inputTextColor;
     private Font headerFont, mainFont, secondaryFont;
+    DBoperation DBops = new DBoperation();
     
     LoginPage()
     {
@@ -129,7 +133,7 @@ public class LoginPage extends JFrame implements ActionListener
         usernameTF.setSize(textFieldWidth, textFieldHeight);
         usernameTF.setBounds((270-250)/2, (50-21)/2, 210, 21);
         
-        passwordTF = new JTextField();
+        passwordTF = new JPasswordField();
         passwordTF.setFont(mainFont);
         passwordTF.setForeground(inputTextColor);
         passwordTF.setBorder(null);
@@ -170,8 +174,39 @@ public class LoginPage extends JFrame implements ActionListener
     {
         if(e.getSource()==loginButton)
         {
-            this.dispose();
-            MainFrame mainFrame = new MainFrame();
+            String loginUsername = usernameTF.getText();
+            //String loginPassword = passwordTF.getText();
+            char[] passwordPerParts = passwordTF.getPassword();
+            String loginPassword = new String(passwordPerParts);
+            
+            boolean loginResult = DBops.LoginUser(loginUsername, loginPassword);
+            
+            if(loginResult == true) {
+                MainFrame mainFrame = new MainFrame(loginUsername, loginPassword);
+                this.dispose();
+            } else {
+                lblLoginMessage.setText("Login failed. Incorrect username or password.");
+                usernameTF.setText(null);
+                passwordTF.setText(null);
+            }
+            
+            
+            /* // >>> Get ID by Username and Password <<< //
+            String loginUsername = usernameTF.getText();
+            char[] passwordPerParts = passwordTF.getPassword();
+            //String loginPassword = passwordPerParts.toString();
+            String loginPassword = new String(passwordPerParts);
+            
+            String saloSalo = "";
+            
+            int IDresult = DBops.GetIDbyUsernamePassword(loginUsername, loginPassword);
+            String convertedID = String.valueOf(IDresult);
+            
+            lblLoginMessage.setText(convertedID);
+            */
+            
+            //this.dispose();
+            //MainFrame mainFrame = new MainFrame();
         }
     }
     

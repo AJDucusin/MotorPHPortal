@@ -1,0 +1,5 @@
+id,firstName,lastName,username,password,status
+1,AJ,Lisama,a.lisama,lisama1234qwer,active
+2,Johari,Ducusin,j.ducusin,ducusin1234qwer,active
+3,Miyatomo,Musashi,m.musashi,musashi1234qwer,inactive
+4,Luffy,D'monkey,l.dmonkey,dmonkey1234qwer,inactive

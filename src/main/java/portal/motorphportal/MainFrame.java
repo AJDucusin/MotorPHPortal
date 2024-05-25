@@ -16,29 +16,32 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MainFrame extends JFrame implements ActionListener
-{
+public class MainFrame extends JFrame implements ActionListener {
+    
+    private String username;
+    private String password;
     
     private JPanel loginPanel, sideBar, headerPanel;
     private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton;
     private JLabel lblHeader;
 
     Resources rsc = new Resources();
+    TestPanel testPanel = new TestPanel();
     
     
-    public MainFrame()
-    {
+    public MainFrame(String username, String password) {
+        this.username = username;
+        this.password = password;
+        
         initialize();
     }
 
     public void initialize()
     {
         // ********** Mouse Function ********** //
-        MouseAdapter handPointer = new MouseAdapter()
-        {
+        MouseAdapter handPointer = new MouseAdapter() {
         @Override
-            public void mouseEntered(MouseEvent e)
-            {
+            public void mouseEntered(MouseEvent e) {
                 headerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 timeInOutButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 profileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -47,8 +50,7 @@ public class MainFrame extends JFrame implements ActionListener
                 exitButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
         @Override
-            public void mouseExited(MouseEvent e)
-            {
+            public void mouseExited(MouseEvent e) {
                 headerButton.setCursor(Cursor.getDefaultCursor());
                 timeInOutButton.setCursor(Cursor.getDefaultCursor());
                 profileButton.setCursor(Cursor.getDefaultCursor());
@@ -72,6 +74,9 @@ public class MainFrame extends JFrame implements ActionListener
         this.setUndecorated(true);
         
         
+        
+        testPanel.initialize(); //to Delete
+        testPanel.setBounds(0, 0, 200, 200); //to Delete
         
         
         sideBar = new JPanel();
@@ -158,6 +163,7 @@ public class MainFrame extends JFrame implements ActionListener
         
         
         headerPanel.add(lblHeader);
+        headerPanel.add(testPanel);
         sideBar.add(headerButton);
         sideBar.add(timeInOutButton);
         sideBar.add(profileButton);
