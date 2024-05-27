@@ -5,3 +5,4 @@ portal\motorphportal\LoginPage.class
 portal\motorphportal\DBoperation.class
 portal\motorphportal\MotorPHPortal.class
 portal\motorphportal\Resources.class
+portal\motorphportal\ProfilePageContent.class

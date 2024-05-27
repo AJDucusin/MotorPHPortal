@@ -1,19 +1,57 @@
 package portal.motorphportal;
 
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class DBoperation {
     
+    private String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
+    
+    private final List<User> users = new ArrayList<>();
+    
+    private void LoadUsersData(){
+        List<user> users = new ArrayList<>();
+        BufferedReader CSVreader = null;
+        
+        try {
+            CSVreader = new BufferedReader(new FileReader(file));
+            String header = CSVreader.readLine();
+            
+            String row;
+            while((row = CSVreader.readLine()) != null){
+                String[] rowArray = row.split(",");
+                int id = Integer.parseInt(rowArray[0].trim()); //Ang .trim() dito ay para tangalin ang whitespaces sa data, mapa unahan or hulihan ng data.
+                String firstName = rowArray[1].trim();
+                String lastName = rowArray[2].trim();
+                String birthday = rowArray[5].trim();
+                
+                users.add(new User(id, firstName, lastName, birthday));
+            }
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                CSVreader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(DBoperation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+            
+            
+            
+            
     
     public int SearchColumnNum(String queriedColumn){
         String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
-        String fileTest = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\testdb.csv";
         BufferedReader CSVreader = null;
         String row = "";
         int columnIndex = -1;
@@ -110,8 +148,6 @@ public class DBoperation {
                 String searchInPasswordColumn = rowArray[4];
                 String searchInIDcolumn = rowArray[0];
                 
-                String salo = "testLine";
-                
                 if(searchInUsernameColumn.equals(usernameInput) && searchInPasswordColumn.equals(passwordInput)) {
                     try {
                         userID = Integer.parseInt(searchInIDcolumn);
@@ -119,12 +155,10 @@ public class DBoperation {
                         nfe.printStackTrace();
                         userID = -1;
                     }
-                    String salo2 = "testLine";
                     break;
                 }
                 
             }
-            
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
@@ -134,8 +168,12 @@ public class DBoperation {
                 Logger.getLogger(DBoperation.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
         return userID;
+    }
+    
+    
+    public void GetInfo(){
+    
     }
     
 }

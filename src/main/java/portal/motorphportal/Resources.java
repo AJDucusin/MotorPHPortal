@@ -56,15 +56,81 @@ public class Resources
     }
     
     
-    public int InfoPanelWidth(){
+    public int HeaderPanelWidth(){
         int infoPanelWidth = (int) (fullScreenWidth - ((fullScreenWidth / ratio)/4));
         return infoPanelWidth;
     }
     
-    public int InfoPanelHeight(){
-        int infoPanelHeight = (fullScreenHeight/100)*5;
+    public int HeaderPanelHeight(){
+        int infoPanelHeight = (int) ((fullScreenHeight/100)*5)*3;
         return infoPanelHeight;
     }
+    
+    public int BodyPanelWidth(){
+        int bodyPanelWidth = (int) (fullScreenWidth - ((fullScreenWidth / ratio)/4));
+        return bodyPanelWidth;
+    }
+    
+    public int BodyPanelHeight(){
+        int bodyPanelHeight = (int) (fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10)));
+        return bodyPanelHeight;
+    }
+    
+    public int FooterPanelWidth(){
+        int footerPanelWidth = (int) (fullScreenWidth - ((fullScreenWidth / ratio)/4));
+        return footerPanelWidth;
+    }
+    
+    public int FooterPanelHeight(){
+        int footerPanelHeight = (int) (fullScreenHeight/100)*10;
+        return footerPanelHeight;
+    }
+    
+    
+    
+    
+    public int ProfileVWidthPadding(){
+        int profileVWidthPadding = (int) ((fullScreenHeight/100)*5);
+        return profileVWidthPadding;
+    }
+    
+    public int ProfileVHeightPadding(){
+        int profileVHeightPadding = (int) (fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10)));
+        return profileVHeightPadding;
+    }
+    
+    public int ProfileHWidthPadding(){
+        int profileHorizontalPadding = (int) (fullScreenWidth - ((fullScreenWidth / ratio)/4));
+        return profileHorizontalPadding;
+    }
+    
+    public int ProfileHHeightPadding(){
+        int profileHHeightPadding = (int) ((fullScreenHeight/100)*5);
+        return profileHHeightPadding;
+    }
+    
+    public int ProfilePageWidth() {
+        int profilePageWidth = (int) (fullScreenWidth - ((fullScreenWidth / ratio)/4)) - ((fullScreenHeight/100)*5);
+        return profilePageWidth;
+    }
+    
+    public int ProfilePageHeight() {
+        int profilePageHeight = (int) (fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10))) - ((fullScreenHeight/100)*5);
+        return profilePageHeight;
+    }
+    
+    
+    public int ProfilePictureWidth() {
+        int profilePictureWidth = (int) ((fullScreenWidth - ((fullScreenWidth / ratio)/4)) - ((fullScreenHeight/100)*5))/4;
+        return profilePictureWidth;
+    }
+    
+    public int ProfilePictureHeight() {
+        int profilePictureHeight = (int) (((fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10))) - ((fullScreenHeight/100)*5))/8)*4;
+        return profilePictureHeight;
+    }
+    
+    
     
     
     public Color PrimaryColor(){

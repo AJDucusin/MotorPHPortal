@@ -21,9 +21,11 @@ public class MainFrame extends JFrame implements ActionListener {
     private String username;
     private String password;
     
-    private JPanel loginPanel, sideBar, headerPanel;
+    private JPanel loginPanel, sideBar, headerPanel, bodyPanel, footerPanel;
     private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton;
-    private JLabel lblHeader;
+    private JLabel lblHeader, lblFooter;
+    
+    private JPanel profilePageContent;
 
     Resources rsc = new Resources();
     TestPanel testPanel = new TestPanel();
@@ -38,6 +40,10 @@ public class MainFrame extends JFrame implements ActionListener {
 
     public void initialize()
     {
+        // ********** Pages and Contents ********** //
+        profilePageContent = new ProfilePageContent();
+        // ********** Pages and Contents ********** //
+        
         // ********** Mouse Function ********** //
         MouseAdapter handPointer = new MouseAdapter() {
         @Override
@@ -75,9 +81,6 @@ public class MainFrame extends JFrame implements ActionListener {
         
         
         
-        testPanel.initialize(); //to Delete
-        testPanel.setBounds(0, 0, 200, 200); //to Delete
-        
         
         sideBar = new JPanel();
         sideBar.setBackground(rsc.SecondaryColor());
@@ -86,17 +89,37 @@ public class MainFrame extends JFrame implements ActionListener {
         
         headerPanel = new JPanel();
         headerPanel.setBackground(rsc.PrimaryColor());
-        headerPanel.setBounds(rsc.SideBarWidth(), 0, rsc.InfoPanelWidth(), rsc.InfoPanelHeight()*3);
-        headerPanel.setLayout(new BorderLayout());
+        headerPanel.setBounds(rsc.SideBarWidth(), 0, rsc.HeaderPanelWidth(), rsc.HeaderPanelHeight());
+        headerPanel.setLayout(new BorderLayout()); //Original
+        //headerPanel.setLayout(null); //Experiment for location and sizing of the panel na ilalagay sa header panel.
+        
+        bodyPanel = new JPanel();
+        //bodyPanel.setBackground(Color.lightGray);
+        bodyPanel.setBackground(rsc.PrimaryColor());
+        bodyPanel.setBounds(rsc.SideBarWidth(), rsc.HeaderPanelHeight(), rsc.BodyPanelWidth(), rsc.BodyPanelHeight());
+        bodyPanel.setLayout(null);
+        
+        footerPanel = new JPanel();
+        //footerPanel.setBackground(Color.ORANGE);
+        footerPanel.setBackground(rsc.PrimaryColor());
+        footerPanel.setBounds(rsc.SideBarWidth(), (rsc.HeaderPanelHeight()+rsc.BodyPanelHeight()), rsc.FooterPanelWidth(), rsc.FooterPanelHeight());
+        footerPanel.setLayout(new BorderLayout());
         
         
         lblHeader = new JLabel();
         lblHeader.setText("Welcome to MotorPH Dashboard Portal");
         lblHeader.setFont(rsc.HeaderFont());
         lblHeader.setForeground(rsc.PrimaryTextColor());
-        lblHeader.setHorizontalAlignment(JLabel.CENTER);
-        lblHeader.setVerticalAlignment(JLabel.CENTER);
-        //lblHeader.setBounds(infoPanelWidth/2, (inforPanelHeight*3)/2, 0, 0);
+        lblHeader.setHorizontalAlignment(JLabel.CENTER); //Original
+        lblHeader.setVerticalAlignment(JLabel.CENTER); //Original
+        //lblHeader.setBounds(rsc.InfoPanelWidth()/2, (rsc.InfoPanelHeight()*3)/2, 0, 0); //Experiment for the size and location of label
+        
+        lblFooter = new JLabel();
+        lblFooter.setText("Terms of Service | Privacy Policy | © 2023-2024 MMDC MO-IT103. All Rights Reserved.");
+        lblFooter.setFont(rsc.SecondaryFont());
+        lblFooter.setForeground(rsc.SecondaryTextColor());
+        lblFooter.setHorizontalAlignment(JLabel.CENTER);
+        lblFooter.setVerticalAlignment(JLabel.CENTER);
         
         
         headerButton = new JButton("Motor PH");
@@ -163,7 +186,15 @@ public class MainFrame extends JFrame implements ActionListener {
         
         
         headerPanel.add(lblHeader);
-        headerPanel.add(testPanel);
+        //headerPanel.revalidate();
+        //headerPanel.repaint();
+        //headerPanel.add(testPanel, BorderLayout.CENTER); //Ito ang cause ng puting bar sa taas
+        //headerPanel.add(testPanel);
+        
+        bodyPanel.add(profilePageContent);
+        
+        footerPanel.add(lblFooter);
+        
         sideBar.add(headerButton);
         sideBar.add(timeInOutButton);
         sideBar.add(profileButton);
@@ -171,8 +202,17 @@ public class MainFrame extends JFrame implements ActionListener {
         sideBar.add(salaryButton);
         sideBar.add(exitButton);
         this.add(headerPanel);
+        this.add(bodyPanel);
+        this.add(footerPanel);
         this.add(sideBar);
         this.setVisible(true);
+        
+        HideAllPagesAndContent();
+    }
+    
+    
+    public void HideAllPagesAndContent(){
+        profilePageContent.setVisible(false);
     }
     
     
@@ -189,6 +229,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         else if(e.getSource()==headerButton)
         {
+            HideAllPagesAndContent();
             headerButton.setBackground(rsc.PrimaryColor());
             timeInOutButton.setBackground(rsc.SecondaryColor());
             profileButton.setBackground(rsc.SecondaryColor());
@@ -200,6 +241,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         else if(e.getSource()==timeInOutButton)
         {
+            HideAllPagesAndContent();
             headerButton.setBackground(rsc.SecondaryColor());
             timeInOutButton.setBackground(rsc.PrimaryColor());
             profileButton.setBackground(rsc.SecondaryColor());
@@ -211,17 +253,21 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         else if(e.getSource()==profileButton)
         {
+            HideAllPagesAndContent();
             headerButton.setBackground(rsc.SecondaryColor());
             timeInOutButton.setBackground(rsc.SecondaryColor());
             profileButton.setBackground(rsc.PrimaryColor());
             timeButton.setBackground(rsc.SecondaryColor());
             salaryButton.setBackground(rsc.SecondaryColor());
             
+            profilePageContent.setVisible(true);
+            
             lblHeader.setText("Profile Page");
             
         }
         else if(e.getSource()==timeButton)
         {
+            HideAllPagesAndContent();
             headerButton.setBackground(rsc.SecondaryColor());
             timeInOutButton.setBackground(rsc.SecondaryColor());
             profileButton.setBackground(rsc.SecondaryColor());
@@ -233,6 +279,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         else if(e.getSource()==salaryButton)
         {
+            HideAllPagesAndContent();
             headerButton.setBackground(rsc.SecondaryColor());
             timeInOutButton.setBackground(rsc.SecondaryColor());
             profileButton.setBackground(rsc.SecondaryColor());
