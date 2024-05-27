@@ -1,24 +1,23 @@
 package portal.motorphportal;
 
 
-import java.awt.List;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import portal.motorphportal.User;
 
 
 public class DBoperation {
     
-    private String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
+    private String file = "C:\\Users\\Abdul-JohariDucusin\\OneDrive - Paynamics Technologies Inc\\Desktop\\MotorPHPortal\\usersdb.csv";
     
-    private final List<User> users = new ArrayList<>();
-    
-    private void LoadUsersData(){
-        List<user> users = new ArrayList<>();
+    public User LoadUsersData(String usernameInput, String passwordInput){
         BufferedReader CSVreader = null;
+        User users = null;
         
         try {
             CSVreader = new BufferedReader(new FileReader(file));
@@ -30,47 +29,29 @@ public class DBoperation {
                 int id = Integer.parseInt(rowArray[0].trim()); //Ang .trim() dito ay para tangalin ang whitespaces sa data, mapa unahan or hulihan ng data.
                 String firstName = rowArray[1].trim();
                 String lastName = rowArray[2].trim();
+                String username = rowArray[3].trim();
+                String password = rowArray[4].trim();
                 String birthday = rowArray[5].trim();
-                
-                users.add(new User(id, firstName, lastName, birthday));
-            }
-            
-        } catch(Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                CSVreader.close();
-            } catch (IOException ex) {
-                Logger.getLogger(DBoperation.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-            
-            
-            
-            
-    
-    public int SearchColumnNum(String queriedColumn){
-        String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
-        BufferedReader CSVreader = null;
-        String row = "";
-        int columnIndex = -1;
-        
-        try {
-            
-            CSVreader = new BufferedReader(new FileReader(file));
-            
-            String readHeader = CSVreader.readLine();
-            String[] splittedHeader = readHeader.split(",");
-            
-            for(int i = 0; i < splittedHeader.length; i++){
-                if(splittedHeader[i].equals(queriedColumn)){
-                    columnIndex = i;
-                    System.out.println(columnIndex);
+                String address = rowArray[6].trim();
+                String phone = rowArray[7].trim();
+                String sss = rowArray[8].trim();
+                String tin = rowArray[9].trim();
+                String pagibig = rowArray[10].trim();
+                String status = rowArray[11].trim();
+                String designation = rowArray[12].trim();
+                String supervisor = rowArray[13].trim();
+                String basicSalary = rowArray[14].trim();
+                String riceSubsidy = rowArray[15].trim();
+                String phoneAllowance = rowArray[16].trim();
+                String clothingAllowance = rowArray[17].trim();
+                String grossSemiMonthlyRate = rowArray[18].trim();
+                String hourlyRate = rowArray[19].trim();
+                String philhealth = rowArray[20].trim();
+                if(username.equals(usernameInput) && password.equals(passwordInput)){
+                    users = new User(id, firstName, lastName, username, password, birthday, address, phone, sss, tin, pagibig, status, designation, supervisor, basicSalary, riceSubsidy, phoneAllowance, clothingAllowance, grossSemiMonthlyRate, hourlyRate, philhealth);
                     break;
                 }
             }
-            
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
@@ -80,15 +61,11 @@ public class DBoperation {
                 Logger.getLogger(DBoperation.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(columnIndex == -1){
-            System.out.println("No matching cloumn found.");
-        }
-        return columnIndex;
+        return users;
     }
+
     
     public boolean LoginUser(String username, String password) {
-        String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
-        String fileTest = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\testdb.csv";
         BufferedReader CSVreader = null;
         String row = "";
         
@@ -127,8 +104,6 @@ public class DBoperation {
     }
     
     public int GetIDbyUsernamePassword(String username, String password) {
-        String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
-        String fileTest = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\testdb.csv";
         BufferedReader CSVreader = null;
         String row = "";
         
@@ -169,11 +144,6 @@ public class DBoperation {
             }
         }
         return userID;
-    }
-    
-    
-    public void GetInfo(){
-    
     }
     
 }

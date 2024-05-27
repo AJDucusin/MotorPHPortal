@@ -1,6 +1,7 @@
 package portal.motorphportal;
 
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -12,15 +13,29 @@ public class ProfilePageContent extends JPanel {
     Resources rsc = new Resources();
     DBoperation DBops = new DBoperation();
     
+    //private int userID = -1;
+    //private String userFirstName = "";
+    //private String userLastName = "";
+    //private String userBirthday = "";
+    
     ProfilePageContent(){
+        LoadUserData();
         initialize();
     }
+    
+    
+    public void LoadUserData(){
+        //List<User> user = DBops.LoadUsersData();
+        //if(user != null){}
+    }
+    
     
     public void initialize(){
         
         // >>> Test for geting info from CSV file. Delete after <<< //
-        int TestOutputByDBops = DBops.GetIDbyUsernamePassword("j.lopez", "lopez12345qwert");
-        String ConvertedTestOutputByDBops = String.valueOf(TestOutputByDBops);
+        User user = DBops.LoadUsersData("j.lopez", "lopez12345qwert");
+        String userLastName = user.getLastName();
+
         // >>> Test for geting info from CSV file. Delete after <<< //
         
         this.setBackground(rsc.PrimaryColor());
@@ -38,11 +53,7 @@ public class ProfilePageContent extends JPanel {
         
         lblProfileName = new JLabel();
         // >>> Test for geting info from CSV file. Delete after <<< //
-        if(TestOutputByDBops == -1){
-            lblProfileName.setText("Ducusin, Abdul-Johari");
-        } else {
-            lblProfileName.setText(ConvertedTestOutputByDBops);
-        }
+        lblProfileName.setText(userLastName);
         // >>> Test for geting info from CSV file. Delete after <<< //
         lblProfileName.setFont(rsc.HeaderFont());
         lblProfileName.setForeground(rsc.PrimaryTextColor());
