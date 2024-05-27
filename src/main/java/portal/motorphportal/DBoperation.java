@@ -2,6 +2,7 @@ package portal.motorphportal;
 
 
 import java.util.List;
+import com.opencsv.CSVReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,6 +16,51 @@ public class DBoperation {
     
     private String file = "C:\\Users\\Abdul-JohariDucusin\\OneDrive - Paynamics Technologies Inc\\Desktop\\MotorPHPortal\\usersdb.csv";
     
+    public User LoadUsersData(String usernameInput, String passwordInput){
+        User users = null;
+        boolean header = true;
+        
+        try {
+            CSVReader csvReader = new CSVReader(new FileReader(file));
+            String[] row;
+            while((row = csvReader.readNext()) != null){
+                if(header){
+                    header = false;
+                    continue;
+                }
+                int id = Integer.parseInt(row[0]);
+                String firstName = row[1];
+                String lastName = row[2];
+                String username = row[3];
+                String password = row[4];
+                String birthday = row[5];
+                String address = row[6];
+                String phone = row[7];
+                String sss = row[8];
+                String tin = row[9];
+                String pagibig = row[10];
+                String status = row[11];
+                String designation = row[12];
+                String supervisor = row[13];
+                String basicSalary = row[14];
+                String riceSubsidy = row[15];
+                String phoneAllowance = row[16];
+                String clothingAllowance = row[17];
+                String grossSemiMonthlyRate = row[18];
+                String hourlyRate = row[19];
+                String philhealth = row[20];
+                if(username.equals(usernameInput) && password.equals(passwordInput)){
+                    users = new User(id, firstName, lastName, username, password, birthday, address, phone, sss, tin, pagibig, status, designation, supervisor, basicSalary, riceSubsidy, phoneAllowance, clothingAllowance, grossSemiMonthlyRate, hourlyRate, philhealth);
+                    break;
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+    
+    /*
     public User LoadUsersData(String usernameInput, String passwordInput){
         BufferedReader CSVreader = null;
         User users = null;
@@ -63,8 +109,36 @@ public class DBoperation {
         }
         return users;
     }
+    */
+    
+    
+    public boolean LoginUser(String usernameInput, String passwordInput){
+        boolean header = true;
+        boolean allowLogin = false;
+        
+        try {
+            CSVReader csvReader = new CSVReader(new FileReader(file));
+            String[] row;
+            while((row = csvReader.readNext()) != null){
+                if(header){
+                    header = false;
+                    continue;
+                }
+                String username = row[3];
+                String password = row[4];
+                if(username.equals(usernameInput) && password.equals(passwordInput)){
+                    allowLogin = true;
+                    break;
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return allowLogin;
+    }
 
     
+    /*
     public boolean LoginUser(String username, String password) {
         BufferedReader CSVreader = null;
         String row = "";
@@ -102,6 +176,7 @@ public class DBoperation {
         
         return ret;
     }
+    */
     
     public int GetIDbyUsernamePassword(String username, String password) {
         BufferedReader CSVreader = null;
