@@ -26,27 +26,27 @@ public class DBoperation {
             String row;
             while((row = CSVreader.readLine()) != null){
                 String[] rowArray = row.split(",");
-                int id = Integer.parseInt(rowArray[0].trim()); //Ang .trim() dito ay para tangalin ang whitespaces sa data, mapa unahan or hulihan ng data.
-                String firstName = rowArray[1].trim();
-                String lastName = rowArray[2].trim();
-                String username = rowArray[3].trim();
-                String password = rowArray[4].trim();
-                String birthday = rowArray[5].trim();
-                String address = rowArray[6].trim();
-                String phone = rowArray[7].trim();
-                String sss = rowArray[8].trim();
-                String tin = rowArray[9].trim();
-                String pagibig = rowArray[10].trim();
-                String status = rowArray[11].trim();
-                String designation = rowArray[12].trim();
-                String supervisor = rowArray[13].trim();
-                String basicSalary = rowArray[14].trim();
-                String riceSubsidy = rowArray[15].trim();
-                String phoneAllowance = rowArray[16].trim();
-                String clothingAllowance = rowArray[17].trim();
-                String grossSemiMonthlyRate = rowArray[18].trim();
-                String hourlyRate = rowArray[19].trim();
-                String philhealth = rowArray[20].trim();
+                int id = Integer.parseInt(rowArray[0]); //Ang .trim() dito ay para tangalin ang whitespaces sa data, mapa unahan or hulihan ng data.
+                String firstName = rowArray[1];
+                String lastName = rowArray[2];
+                String username = rowArray[3];
+                String password = rowArray[4];
+                String birthday = rowArray[5];
+                String address = rowArray[6];
+                String phone = rowArray[7];
+                String sss = rowArray[8];
+                String tin = rowArray[9];
+                String pagibig = rowArray[10];
+                String status = rowArray[11];
+                String designation = rowArray[12];
+                String supervisor = rowArray[13];
+                String basicSalary = rowArray[14];
+                String riceSubsidy = rowArray[15];
+                String phoneAllowance = rowArray[16];
+                String clothingAllowance = rowArray[17];
+                String grossSemiMonthlyRate = rowArray[18];
+                String hourlyRate = rowArray[19];
+                String philhealth = rowArray[20];
                 if(username.equals(usernameInput) && password.equals(passwordInput)){
                     users = new User(id, firstName, lastName, username, password, birthday, address, phone, sss, tin, pagibig, status, designation, supervisor, basicSalary, riceSubsidy, phoneAllowance, clothingAllowance, grossSemiMonthlyRate, hourlyRate, philhealth);
                     break;

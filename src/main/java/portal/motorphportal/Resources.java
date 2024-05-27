@@ -157,6 +157,11 @@ public class Resources
         return new Color(0x28231d);
     }
     
+    
+    public Font HeaderFont2(){
+        return new Font("Sans Serif",Font.BOLD,24);
+    }
+    
     public Font HeaderFont(){
         return new Font("Sans Serif",Font.BOLD,20);
     }

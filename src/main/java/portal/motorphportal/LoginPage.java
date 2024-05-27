@@ -189,24 +189,6 @@ public class LoginPage extends JFrame implements ActionListener
                 usernameTF.setText(null);
                 passwordTF.setText(null);
             }
-            
-            
-            /* // >>> Get ID by Username and Password <<< //
-            String loginUsername = usernameTF.getText();
-            char[] passwordPerParts = passwordTF.getPassword();
-            //String loginPassword = passwordPerParts.toString();
-            String loginPassword = new String(passwordPerParts);
-            
-            String saloSalo = "";
-            
-            int IDresult = DBops.GetIDbyUsernamePassword(loginUsername, loginPassword);
-            String convertedID = String.valueOf(IDresult);
-            
-            lblLoginMessage.setText(convertedID);
-            */
-            
-            //this.dispose();
-            //MainFrame mainFrame = new MainFrame();
         }
     }
     

@@ -1,16 +1,11 @@
 package portal.motorphportal;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,7 +36,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public void initialize()
     {
         // ********** Pages and Contents ********** //
-        profilePageContent = new ProfilePageContent();
+        profilePageContent = new ProfilePageContent(username, password);
         // ********** Pages and Contents ********** //
         
         // ********** Mouse Function ********** //
@@ -69,7 +64,6 @@ public class MainFrame extends JFrame implements ActionListener {
         
         
         
-        
         this.setTitle("Motor PH Portal");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -78,7 +72,6 @@ public class MainFrame extends JFrame implements ActionListener {
         this.setSize(rsc.FullscreenWidth(), rsc.FullscreenHeight());
         this.getContentPane().setBackground(rsc.PrimaryColor());
         this.setUndecorated(true);
-        
         
         
         
@@ -91,16 +84,13 @@ public class MainFrame extends JFrame implements ActionListener {
         headerPanel.setBackground(rsc.PrimaryColor());
         headerPanel.setBounds(rsc.SideBarWidth(), 0, rsc.HeaderPanelWidth(), rsc.HeaderPanelHeight());
         headerPanel.setLayout(new BorderLayout()); //Original
-        //headerPanel.setLayout(null); //Experiment for location and sizing of the panel na ilalagay sa header panel.
         
         bodyPanel = new JPanel();
-        //bodyPanel.setBackground(Color.lightGray);
         bodyPanel.setBackground(rsc.PrimaryColor());
         bodyPanel.setBounds(rsc.SideBarWidth(), rsc.HeaderPanelHeight(), rsc.BodyPanelWidth(), rsc.BodyPanelHeight());
         bodyPanel.setLayout(null);
         
         footerPanel = new JPanel();
-        //footerPanel.setBackground(Color.ORANGE);
         footerPanel.setBackground(rsc.PrimaryColor());
         footerPanel.setBounds(rsc.SideBarWidth(), (rsc.HeaderPanelHeight()+rsc.BodyPanelHeight()), rsc.FooterPanelWidth(), rsc.FooterPanelHeight());
         footerPanel.setLayout(new BorderLayout());
@@ -108,11 +98,10 @@ public class MainFrame extends JFrame implements ActionListener {
         
         lblHeader = new JLabel();
         lblHeader.setText("Welcome to MotorPH Dashboard Portal");
-        lblHeader.setFont(rsc.HeaderFont());
+        lblHeader.setFont(rsc.HeaderFont2());
         lblHeader.setForeground(rsc.PrimaryTextColor());
         lblHeader.setHorizontalAlignment(JLabel.CENTER); //Original
         lblHeader.setVerticalAlignment(JLabel.CENTER); //Original
-        //lblHeader.setBounds(rsc.InfoPanelWidth()/2, (rsc.InfoPanelHeight()*3)/2, 0, 0); //Experiment for the size and location of label
         
         lblFooter = new JLabel();
         lblFooter.setText("Terms of Service | Privacy Policy | © 2023-2024 MMDC MO-IT103. All Rights Reserved.");
@@ -184,12 +173,7 @@ public class MainFrame extends JFrame implements ActionListener {
         
         
         
-        
         headerPanel.add(lblHeader);
-        //headerPanel.revalidate();
-        //headerPanel.repaint();
-        //headerPanel.add(testPanel, BorderLayout.CENTER); //Ito ang cause ng puting bar sa taas
-        //headerPanel.add(testPanel);
         
         bodyPanel.add(profilePageContent);
         
@@ -215,80 +199,57 @@ public class MainFrame extends JFrame implements ActionListener {
         profilePageContent.setVisible(false);
     }
     
+    public void ButtonDefaultColor() {
+        headerButton.setBackground(rsc.SecondaryColor());
+        timeInOutButton.setBackground(rsc.SecondaryColor());
+        profileButton.setBackground(rsc.SecondaryColor());
+        timeButton.setBackground(rsc.SecondaryColor());
+        salaryButton.setBackground(rsc.SecondaryColor());
+    }
+    
     
     @Override
     public void actionPerformed(ActionEvent e)
     {
         if(e.getSource()==exitButton)
         {
-            //System.out.println("Login button clicked!");
-            //loginPanel.setVisible(false);
-            //loginButton.setVisible(false);
-            
             this.dispose();
         }
         else if(e.getSource()==headerButton)
         {
             HideAllPagesAndContent();
+            ButtonDefaultColor();
             headerButton.setBackground(rsc.PrimaryColor());
-            timeInOutButton.setBackground(rsc.SecondaryColor());
-            profileButton.setBackground(rsc.SecondaryColor());
-            timeButton.setBackground(rsc.SecondaryColor());
-            salaryButton.setBackground(rsc.SecondaryColor());
-            
             lblHeader.setText("Welcome to MotorPH Dashboard Portal");
-            
         }
         else if(e.getSource()==timeInOutButton)
         {
             HideAllPagesAndContent();
-            headerButton.setBackground(rsc.SecondaryColor());
+            ButtonDefaultColor();
             timeInOutButton.setBackground(rsc.PrimaryColor());
-            profileButton.setBackground(rsc.SecondaryColor());
-            timeButton.setBackground(rsc.SecondaryColor());
-            salaryButton.setBackground(rsc.SecondaryColor());
-            
             lblHeader.setText("Time-In Time-Out Page");
-            
         }
         else if(e.getSource()==profileButton)
         {
             HideAllPagesAndContent();
-            headerButton.setBackground(rsc.SecondaryColor());
-            timeInOutButton.setBackground(rsc.SecondaryColor());
+            ButtonDefaultColor();
             profileButton.setBackground(rsc.PrimaryColor());
-            timeButton.setBackground(rsc.SecondaryColor());
-            salaryButton.setBackground(rsc.SecondaryColor());
-            
             profilePageContent.setVisible(true);
-            
             lblHeader.setText("Profile Page");
-            
         }
         else if(e.getSource()==timeButton)
         {
             HideAllPagesAndContent();
-            headerButton.setBackground(rsc.SecondaryColor());
-            timeInOutButton.setBackground(rsc.SecondaryColor());
-            profileButton.setBackground(rsc.SecondaryColor());
+            ButtonDefaultColor();
             timeButton.setBackground(rsc.PrimaryColor());
-            salaryButton.setBackground(rsc.SecondaryColor());
-            
             lblHeader.setText("View Time Logs Page");
-            
         }
         else if(e.getSource()==salaryButton)
         {
             HideAllPagesAndContent();
-            headerButton.setBackground(rsc.SecondaryColor());
-            timeInOutButton.setBackground(rsc.SecondaryColor());
-            profileButton.setBackground(rsc.SecondaryColor());
-            timeButton.setBackground(rsc.SecondaryColor());
+            ButtonDefaultColor();
             salaryButton.setBackground(rsc.PrimaryColor());
-            
             lblHeader.setText("View Salary Page");
-            
         }
     }
-
 }
