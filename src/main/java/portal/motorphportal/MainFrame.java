@@ -20,10 +20,9 @@ public class MainFrame extends JFrame implements ActionListener {
     private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton;
     private JLabel lblHeader, lblFooter;
     
-    private JPanel profilePageContent;
+    private JPanel profilePageContent, salaryPageContent;
 
     Resources rsc = new Resources();
-    TestPanel testPanel = new TestPanel();
     
     
     public MainFrame(String username, String password) {
@@ -37,6 +36,7 @@ public class MainFrame extends JFrame implements ActionListener {
     {
         // ********** Pages and Contents ********** //
         profilePageContent = new ProfilePageContent(username, password);
+        salaryPageContent = new SalaryPageContent(username, password);
         // ********** Pages and Contents ********** //
         
         // ********** Mouse Function ********** //
@@ -176,6 +176,7 @@ public class MainFrame extends JFrame implements ActionListener {
         headerPanel.add(lblHeader);
         
         bodyPanel.add(profilePageContent);
+        bodyPanel.add(salaryPageContent);
         
         footerPanel.add(lblFooter);
         
@@ -197,6 +198,7 @@ public class MainFrame extends JFrame implements ActionListener {
     
     public void HideAllPagesAndContent(){
         profilePageContent.setVisible(false);
+        salaryPageContent.setVisible(false);
     }
     
     public void ButtonDefaultColor() {
@@ -249,6 +251,7 @@ public class MainFrame extends JFrame implements ActionListener {
             HideAllPagesAndContent();
             ButtonDefaultColor();
             salaryButton.setBackground(rsc.PrimaryColor());
+            salaryPageContent.setVisible(true);
             lblHeader.setText("View Salary Page");
         }
     }
