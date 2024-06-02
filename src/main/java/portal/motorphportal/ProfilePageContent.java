@@ -9,11 +9,11 @@ import javax.swing.JPanel;
 
 public class ProfilePageContent extends JPanel {
     
-    private String imagePath = "C:\\Users\\Abdul-JohariDucusin\\OneDrive - Paynamics Technologies Inc\\Desktop\\MotorPHPortal\\img\\";
+    private String imagePath = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\img\\";
     private String imageCount = "0";
     
     private JPanel profilePicturePanel, profileName;
-    private JLabel lblProfileName, lblSss, lblPhilhealthNum, sssOutput, lblTaxNum, lblPagibigNum, philhealthOutput, taxOutput, pagibigOutput, profilePictureContainer, designationOutput;
+    private JLabel lblProfileName, lblSss, lblPhilhealthNum, sssOutput, lblTaxNum, lblPagibigNum, philhealthOutput, taxOutput, pagibigOutput, profilePictureContainer, lblAddress, addressOutput, designationOutput;
     private ImageIcon profilePicture, scaledProfilePicture;
     
     Resources rsc = new Resources();
@@ -35,6 +35,7 @@ public class ProfilePageContent extends JPanel {
         String userTIN = user.getTin();
         String userPagibig = user.getPagibig();
         String userDesignation = user.getDesignation();
+        String userAddress = user.getAddress();
         
         this.setBackground(rsc.PrimaryColor());
         this.setSize(rsc.ProfilePageWidth(), rsc.ProfilePageHeight());
@@ -76,72 +77,116 @@ public class ProfilePageContent extends JPanel {
         lblProfileName.setVerticalAlignment(JLabel.CENTER);
         
         
+        // ********************* SSS ********************* //
         lblSss = new JLabel();
         lblSss.setText("SSS Number:");
         lblSss.setFont(rsc.MainFont());
+        //lblSss.setOpaque(true);
+        //lblSss.setBackground(Color.RED);
         lblSss.setForeground(rsc.PrimaryTextColor());
-        lblSss.setBounds(0, rsc.BodyPanelHeight()/8, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        lblSss.setHorizontalAlignment(JLabel.CENTER);
+        lblSss.setBounds(0, rsc.BodyPanelHeight()/8, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblSss.setHorizontalAlignment(JLabel.RIGHT);
         lblSss.setVerticalAlignment(JLabel.CENTER);
         
         sssOutput = new JLabel();
         sssOutput.setText(userSss);
         sssOutput.setFont(rsc.MainFont());
+        //sssOutput.setOpaque(true);
+        //sssOutput.setBackground(Color.DARK_GRAY);
         sssOutput.setForeground(rsc.PrimaryTextColor());
-        sssOutput.setBounds((rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        sssOutput.setHorizontalAlignment(JLabel.CENTER);
+        sssOutput.setBounds(rsc.ProfilePictureWidth()+10, rsc.BodyPanelHeight()/8, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        sssOutput.setHorizontalAlignment(JLabel.LEFT);
         sssOutput.setVerticalAlignment(JLabel.CENTER);
+        // ********************* SSS ********************* //
         
         
+        // ********************* PhilHealth ********************* //
         lblPhilhealthNum = new JLabel();
         lblPhilhealthNum.setText("Philhealth Number:");
         lblPhilhealthNum.setFont(rsc.MainFont());
+        //lblPhilhealthNum.setOpaque(true);
+        //lblPhilhealthNum.setBackground(Color.ORANGE);
         lblPhilhealthNum.setForeground(rsc.PrimaryTextColor());
-        lblPhilhealthNum.setBounds(0, (rsc.BodyPanelHeight()/8)*2, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        lblPhilhealthNum.setHorizontalAlignment(JLabel.CENTER);
+        lblPhilhealthNum.setBounds(0, (rsc.BodyPanelHeight()*3)/16, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblPhilhealthNum.setHorizontalAlignment(JLabel.RIGHT);
         lblPhilhealthNum.setVerticalAlignment(JLabel.CENTER);
         
         philhealthOutput = new JLabel();
         philhealthOutput.setText(userPhilhealth);
         philhealthOutput.setFont(rsc.MainFont());
+        //philhealthOutput.setOpaque(true);
+        //philhealthOutput.setBackground(Color.GREEN);
         philhealthOutput.setForeground(rsc.PrimaryTextColor());
-        philhealthOutput.setBounds((rsc.ProfilePictureWidth()*3)/2, (rsc.BodyPanelHeight()/8)*2, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        philhealthOutput.setHorizontalAlignment(JLabel.CENTER);
+        philhealthOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*3)/16, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        philhealthOutput.setHorizontalAlignment(JLabel.LEFT);
         philhealthOutput.setVerticalAlignment(JLabel.CENTER);
+        // ********************* PhilHealth ********************* //
         
         
+        // ********************* Tax ********************* //
         lblTaxNum = new JLabel();
         lblTaxNum.setText("Tax Identification Number:");
         lblTaxNum.setFont(rsc.MainFont());
+        //lblTaxNum.setOpaque(true);
+        //lblTaxNum.setBackground(Color.YELLOW);
         lblTaxNum.setForeground(rsc.PrimaryTextColor());
-        lblTaxNum.setBounds(0, (rsc.BodyPanelHeight()/8)*3, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        lblTaxNum.setHorizontalAlignment(JLabel.CENTER);
+        lblTaxNum.setBounds(0, rsc.BodyPanelHeight()/4, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblTaxNum.setHorizontalAlignment(JLabel.RIGHT);
         lblTaxNum.setVerticalAlignment(JLabel.CENTER);
         
         taxOutput = new JLabel();
         taxOutput.setText(userTIN);
         taxOutput.setFont(rsc.MainFont());
+        //taxOutput.setOpaque(true);
+        //taxOutput.setBackground(Color.PINK);
         taxOutput.setForeground(rsc.PrimaryTextColor());
-        taxOutput.setBounds((rsc.ProfilePictureWidth()*3)/2, (rsc.BodyPanelHeight()/8)*3, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        taxOutput.setHorizontalAlignment(JLabel.CENTER);
+        taxOutput.setBounds(rsc.ProfilePictureWidth()+10, rsc.BodyPanelHeight()/4, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        taxOutput.setHorizontalAlignment(JLabel.LEFT);
         taxOutput.setVerticalAlignment(JLabel.CENTER);
+        // ********************* Tax ********************* //
         
         
+        // ********************* Pagibig ********************* //
         lblPagibigNum = new JLabel();
         lblPagibigNum.setText("Pag-ibig Number:");
         lblPagibigNum.setFont(rsc.MainFont());
+        //lblPagibigNum.setOpaque(true);
+        //lblPagibigNum.setBackground(Color.GREEN);
         lblPagibigNum.setForeground(rsc.PrimaryTextColor());
-        lblPagibigNum.setBounds(0, (rsc.BodyPanelHeight()/8)*4, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        lblPagibigNum.setHorizontalAlignment(JLabel.CENTER);
+        lblPagibigNum.setBounds(0, (rsc.BodyPanelHeight()*5)/16, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblPagibigNum.setHorizontalAlignment(JLabel.RIGHT);
         lblPagibigNum.setVerticalAlignment(JLabel.CENTER);
         
         pagibigOutput = new JLabel();
         pagibigOutput.setText(userPagibig);
         pagibigOutput.setFont(rsc.MainFont());
         pagibigOutput.setForeground(rsc.PrimaryTextColor());
-        pagibigOutput.setBounds((rsc.ProfilePictureWidth()*3)/2, (rsc.BodyPanelHeight()/8)*4, (rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/8);
-        pagibigOutput.setHorizontalAlignment(JLabel.CENTER);
+        pagibigOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*5)/16, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        pagibigOutput.setHorizontalAlignment(JLabel.LEFT);
         pagibigOutput.setVerticalAlignment(JLabel.CENTER);
+        // ********************* Pagibig ********************* //
+        
+        
+        // ********************* Address ********************* //
+        lblAddress = new JLabel();
+        lblAddress.setText("Address:");
+        lblAddress.setFont(rsc.MainFont());
+        //lblAddress.setOpaque(true);
+        //lblAddress.setBackground(Color.RED);
+        lblAddress.setForeground(rsc.PrimaryTextColor());
+        lblAddress.setBounds(0, (rsc.BodyPanelHeight()*3)/8, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblAddress.setHorizontalAlignment(JLabel.RIGHT);
+        lblAddress.setVerticalAlignment(JLabel.CENTER);
+        
+        addressOutput = new JLabel();
+        addressOutput.setText(userAddress);
+        addressOutput.setFont(rsc.MainFont());
+        addressOutput.setForeground(rsc.PrimaryTextColor());
+        addressOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*3)/8, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        addressOutput.setHorizontalAlignment(JLabel.LEFT);
+        addressOutput.setVerticalAlignment(JLabel.CENTER);
+        // ********************* Address ********************* //
+        
         
         designationOutput = new JLabel();
         designationOutput.setText(userDesignation);
@@ -149,7 +194,7 @@ public class ProfilePageContent extends JPanel {
         designationOutput.setForeground(rsc.PrimaryTextColor());
         designationOutput.setOpaque(true);
         designationOutput.setBackground(rsc.SecondaryColor());
-        designationOutput.setBounds(rsc.ProfilePictureWidth()*3, rsc.ProfilePictureHeight(), rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/8);
+        designationOutput.setBounds(rsc.ProfilePictureWidth()*3, rsc.ProfilePictureHeight(), rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16);
         designationOutput.setHorizontalAlignment(JLabel.CENTER);
         designationOutput.setVerticalAlignment(JLabel.CENTER);
         
@@ -162,11 +207,13 @@ public class ProfilePageContent extends JPanel {
         this.add(lblPhilhealthNum);
         this.add(lblTaxNum);
         this.add(lblPagibigNum);
+        this.add(lblAddress);
         this.add(designationOutput);
         
         this.add(sssOutput);
         this.add(philhealthOutput);
         this.add(taxOutput);
         this.add(pagibigOutput);
+        this.add(addressOutput);
     }
 }

@@ -3,8 +3,10 @@ package portal.motorphportal;
 
 import java.util.List;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -14,7 +16,7 @@ import portal.motorphportal.User;
 
 public class DBoperation {
     
-    private String file = "C:\\Users\\Abdul-JohariDucusin\\OneDrive - Paynamics Technologies Inc\\Desktop\\MotorPHPortal\\usersdb.csv";
+    private String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
     
     public User LoadUsersData(String usernameInput, String passwordInput){
         User users = null;
@@ -59,6 +61,77 @@ public class DBoperation {
         }
         return users;
     }
+    
+    
+    // VVV Ang behavior ng method na ito sa baba ay; ireread nya lahat ng row sa table, ilalagay nya sa array list, i-skip nya ang row na buburahin, irere-write nya ulit ang buong csv file.
+    public void DeleteUserData(String idToDelete) {
+        List<String[]> allData = new ArrayList<>(); // <<< ito ang array na paglalagyan ng lahat ng data galing sa csv.
+        boolean header = true;
+        try {
+            CSVReader csvReader = new CSVReader(new FileReader(file));
+            String[] row;
+            
+            while((row = csvReader.readNext()) != null){
+                if(header){ // <<< ang if-statement na ito ay para i-skip nya ang header. Pinag iisipan kong burahin ang part na ito.
+                    header = false;
+                    allData.add(row);
+                    continue;
+                }
+                String id = row[0];
+                if(!id.equals(idToDelete)){ // <<< ito ang part na dinadagdag nya lahat ng rows of data sa loob ng array list. Dito rin sa part na ito sya nag sskip ng buburahing data.
+                    allData.add(row);
+                }
+            }
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        // VVV  ito ang part na nirere-write na nya ulit ang lahat ng data sa CSV file.
+        try {
+            CSVWriter csvWriter = new CSVWriter(new FileWriter(file));
+            csvWriter.writeAll(allData);
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    
+    }
+    
+    
+    
+    public void UpdateUserData(String idToUpdate, String[] updatedData){
+        List<String[]> allData = new ArrayList<>();
+        boolean header = true;
+        
+        try {
+            CSVReader csvReader = new CSVReader(new FileReader(file));
+            String[] row;
+            while((row = csvReader.readNext()) != null){
+                if(header) {
+                    header = false;
+                    allData.add(row);
+                    continue;
+                }
+                String id = row[0];
+                if(id.equals(idToUpdate)){
+                    allData.add(updatedData);
+                } else {
+                    allData.add(row);
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            CSVWriter csvWriter = new CSVWriter(new FileWriter(file));
+            csvWriter.writeAll(allData);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    
     
     /*
     public User LoadUsersData(String usernameInput, String passwordInput){
