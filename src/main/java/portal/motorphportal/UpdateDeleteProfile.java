@@ -18,7 +18,7 @@ public class UpdateDeleteProfile extends JPanel {
         
         this.setBackground(Color.red);
         //this.setBackground(rsc.PrimaryColor());
-        this.setSize(rsc.ProfilePageWidth(), rsc.ProfilePageHeight());
+        this.setSize(rsc.BodyContentPageWidth(), rsc.BodyContentPageHeight());
         this.setLayout(null);
         
     }

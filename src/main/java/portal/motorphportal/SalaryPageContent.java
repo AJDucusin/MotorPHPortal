@@ -32,7 +32,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
     public void initialize() {
         
         this.setBackground(rsc.PrimaryColor());
-        this.setSize(rsc.ProfilePageWidth(), rsc.ProfilePageHeight());
+        this.setSize(rsc.BodyContentPageWidth(), rsc.BodyContentPageHeight());
         this.setLayout(null);
         
         //clockPanel = new JPanel();
@@ -42,7 +42,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //clockPanel.setLayout(null);
         
         salaryCalendar = new JCalendar();
-        salaryCalendar.setBounds((rsc.ProfilePageWidth()-rsc.ProfilePictureWidth()), 0, rsc.ProfilePictureWidth(), rsc.ProfilePictureHeight()-50);
+        salaryCalendar.setBounds((rsc.BodyContentPageWidth()-rsc.ProfilePictureWidth()), 0, rsc.ProfilePictureWidth(), rsc.ProfilePictureHeight()-50);
         
         getDateButton = new JButton("Set Date");
         getDateButton.addActionListener(this);
@@ -51,7 +51,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //loginButton.setBorder(null);
         getDateButton.setFont(rsc.SecondaryFont());
         getDateButton.setFocusable(false);
-        getDateButton.setBounds((rsc.ProfilePageWidth()-rsc.ProfilePictureWidth()), rsc.ProfilePictureHeight()-50, rsc.ProfilePictureWidth(), 100);
+        getDateButton.setBounds((rsc.BodyContentPageWidth()-rsc.ProfilePictureWidth()), rsc.ProfilePictureHeight()-50, rsc.ProfilePictureWidth(), 100);
         
         
         
@@ -62,7 +62,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //lblSearch.setBackground(Color.BLUE);
         lblSearch.setFont(rsc.MainFont());
         lblSearch.setForeground(rsc.PrimaryTextColor());
-        lblSearch.setBounds(0, 0, rsc.ProfilePictureWidth()*3, rsc.BodyPanelHeight()/16);
+        lblSearch.setBounds(0, 0, rsc.ProfilePictureWidth()*3, rsc.bcTextHeight());
         lblSearch.setHorizontalAlignment(JLabel.CENTER);
         lblSearch.setVerticalAlignment(JLabel.CENTER);
         
@@ -74,7 +74,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //lblFrom.setBackground(Color.ORANGE);
         lblFrom.setFont(rsc.MainFont());
         lblFrom.setForeground(rsc.PrimaryTextColor());
-        lblFrom.setBounds(0, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16);
+        lblFrom.setBounds(0, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
         lblFrom.setHorizontalAlignment(JLabel.RIGHT);
         lblFrom.setVerticalAlignment(JLabel.CENTER);
         
@@ -84,7 +84,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //lblOutputFrom.setBackground(Color.BLUE);
         lblOutputFrom.setFont(rsc.MainFont());
         lblOutputFrom.setForeground(rsc.PrimaryTextColor());
-        lblOutputFrom.setBounds(rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()-(rsc.ProfilePictureWidth()/4), rsc.BodyPanelHeight()/16);
+        lblOutputFrom.setBounds(rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()-(rsc.ProfilePictureWidth()/4), rsc.bcTextHeight());
         lblOutputFrom.setHorizontalAlignment(JLabel.CENTER);
         lblOutputFrom.setVerticalAlignment(JLabel.CENTER);
         
@@ -95,7 +95,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //btnGetFromDate.setBorder(null);
         btnGetFromDate.setFont(rsc.SecondaryFont());
         btnGetFromDate.setFocusable(false);
-        btnGetFromDate.setBounds(rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16);
+        btnGetFromDate.setBounds(rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
         
         //TFfrom = new JTextField();
         //TFfrom.setFont(rsc.MainFont());
@@ -112,7 +112,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //lblTo.setBackground(Color.GREEN);
         lblTo.setFont(rsc.MainFont());
         lblTo.setForeground(rsc.PrimaryTextColor());
-        lblTo.setBounds((rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16);
+        lblTo.setBounds((rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
         lblTo.setHorizontalAlignment(JLabel.RIGHT);
         lblTo.setVerticalAlignment(JLabel.CENTER);
         
@@ -122,7 +122,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //lblOutputTo.setBackground(Color.BLUE);
         lblOutputTo.setFont(rsc.MainFont());
         lblOutputTo.setForeground(rsc.PrimaryTextColor());
-        lblOutputTo.setBounds(((rsc.ProfilePictureWidth()*3)/2)+(rsc.ProfilePictureWidth()/4), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()-(rsc.ProfilePictureWidth()/4), rsc.BodyPanelHeight()/16);
+        lblOutputTo.setBounds(((rsc.ProfilePictureWidth()*3)/2)+(rsc.ProfilePictureWidth()/4), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()-(rsc.ProfilePictureWidth()/4), rsc.bcTextHeight());
         lblOutputTo.setHorizontalAlignment(JLabel.CENTER);
         lblOutputTo.setVerticalAlignment(JLabel.CENTER);
         
@@ -133,7 +133,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //btnGetToDate.setBorder(null);
         btnGetToDate.setFont(rsc.SecondaryFont());
         btnGetToDate.setFocusable(false);
-        btnGetToDate.setBounds(((rsc.ProfilePictureWidth()*3)/2+(rsc.ProfilePictureWidth()/4))+rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16);
+        btnGetToDate.setBounds(((rsc.ProfilePictureWidth()*3)/2+(rsc.ProfilePictureWidth()/4))+rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
         
         
         this.add(salaryCalendar);

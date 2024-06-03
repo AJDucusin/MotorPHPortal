@@ -38,7 +38,7 @@ public class ProfilePageContent extends JPanel {
         String userAddress = user.getAddress();
         
         this.setBackground(rsc.PrimaryColor());
-        this.setSize(rsc.ProfilePageWidth(), rsc.ProfilePageHeight());
+        this.setSize(rsc.BodyContentPageWidth(), rsc.BodyContentPageHeight());
         this.setLayout(null);
         
         
@@ -84,7 +84,7 @@ public class ProfilePageContent extends JPanel {
         //lblSss.setOpaque(true);
         //lblSss.setBackground(Color.RED);
         lblSss.setForeground(rsc.PrimaryTextColor());
-        lblSss.setBounds(0, rsc.BodyPanelHeight()/8, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblSss.setBounds(0, rsc.BodyPanelHeight()/8, rsc.ProfilePictureWidth()-10, rsc.bcTextHeight());
         lblSss.setHorizontalAlignment(JLabel.RIGHT);
         lblSss.setVerticalAlignment(JLabel.CENTER);
         
@@ -94,7 +94,7 @@ public class ProfilePageContent extends JPanel {
         //sssOutput.setOpaque(true);
         //sssOutput.setBackground(Color.DARK_GRAY);
         sssOutput.setForeground(rsc.PrimaryTextColor());
-        sssOutput.setBounds(rsc.ProfilePictureWidth()+10, rsc.BodyPanelHeight()/8, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        sssOutput.setBounds(rsc.ProfilePictureWidth()+10, rsc.BodyPanelHeight()/8, (rsc.ProfilePictureWidth()*2)-10, rsc.bcTextHeight());
         sssOutput.setHorizontalAlignment(JLabel.LEFT);
         sssOutput.setVerticalAlignment(JLabel.CENTER);
         // ********************* SSS ********************* //
@@ -107,7 +107,7 @@ public class ProfilePageContent extends JPanel {
         //lblPhilhealthNum.setOpaque(true);
         //lblPhilhealthNum.setBackground(Color.ORANGE);
         lblPhilhealthNum.setForeground(rsc.PrimaryTextColor());
-        lblPhilhealthNum.setBounds(0, (rsc.BodyPanelHeight()*3)/16, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblPhilhealthNum.setBounds(0, (rsc.BodyPanelHeight()*3)/16, rsc.ProfilePictureWidth()-10, rsc.bcTextHeight());
         lblPhilhealthNum.setHorizontalAlignment(JLabel.RIGHT);
         lblPhilhealthNum.setVerticalAlignment(JLabel.CENTER);
         
@@ -117,7 +117,7 @@ public class ProfilePageContent extends JPanel {
         //philhealthOutput.setOpaque(true);
         //philhealthOutput.setBackground(Color.GREEN);
         philhealthOutput.setForeground(rsc.PrimaryTextColor());
-        philhealthOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*3)/16, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        philhealthOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*3)/16, (rsc.ProfilePictureWidth()*2)-10, rsc.bcTextHeight());
         philhealthOutput.setHorizontalAlignment(JLabel.LEFT);
         philhealthOutput.setVerticalAlignment(JLabel.CENTER);
         // ********************* PhilHealth ********************* //
@@ -130,7 +130,7 @@ public class ProfilePageContent extends JPanel {
         //lblTaxNum.setOpaque(true);
         //lblTaxNum.setBackground(Color.YELLOW);
         lblTaxNum.setForeground(rsc.PrimaryTextColor());
-        lblTaxNum.setBounds(0, rsc.BodyPanelHeight()/4, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblTaxNum.setBounds(0, rsc.BodyPanelHeight()/4, rsc.ProfilePictureWidth()-10, rsc.bcTextHeight());
         lblTaxNum.setHorizontalAlignment(JLabel.RIGHT);
         lblTaxNum.setVerticalAlignment(JLabel.CENTER);
         
@@ -140,7 +140,7 @@ public class ProfilePageContent extends JPanel {
         //taxOutput.setOpaque(true);
         //taxOutput.setBackground(Color.PINK);
         taxOutput.setForeground(rsc.PrimaryTextColor());
-        taxOutput.setBounds(rsc.ProfilePictureWidth()+10, rsc.BodyPanelHeight()/4, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        taxOutput.setBounds(rsc.ProfilePictureWidth()+10, rsc.BodyPanelHeight()/4, (rsc.ProfilePictureWidth()*2)-10, rsc.bcTextHeight());
         taxOutput.setHorizontalAlignment(JLabel.LEFT);
         taxOutput.setVerticalAlignment(JLabel.CENTER);
         // ********************* Tax ********************* //
@@ -153,7 +153,7 @@ public class ProfilePageContent extends JPanel {
         //lblPagibigNum.setOpaque(true);
         //lblPagibigNum.setBackground(Color.GREEN);
         lblPagibigNum.setForeground(rsc.PrimaryTextColor());
-        lblPagibigNum.setBounds(0, (rsc.BodyPanelHeight()*5)/16, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblPagibigNum.setBounds(0, (rsc.BodyPanelHeight()*5)/16, rsc.ProfilePictureWidth()-10, rsc.bcTextHeight());
         lblPagibigNum.setHorizontalAlignment(JLabel.RIGHT);
         lblPagibigNum.setVerticalAlignment(JLabel.CENTER);
         
@@ -161,7 +161,7 @@ public class ProfilePageContent extends JPanel {
         pagibigOutput.setText(userPagibig);
         pagibigOutput.setFont(rsc.MainFont());
         pagibigOutput.setForeground(rsc.PrimaryTextColor());
-        pagibigOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*5)/16, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        pagibigOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*5)/16, (rsc.ProfilePictureWidth()*2)-10, rsc.bcTextHeight());
         pagibigOutput.setHorizontalAlignment(JLabel.LEFT);
         pagibigOutput.setVerticalAlignment(JLabel.CENTER);
         // ********************* Pagibig ********************* //
@@ -174,7 +174,7 @@ public class ProfilePageContent extends JPanel {
         //lblAddress.setOpaque(true);
         //lblAddress.setBackground(Color.RED);
         lblAddress.setForeground(rsc.PrimaryTextColor());
-        lblAddress.setBounds(0, (rsc.BodyPanelHeight()*3)/8, rsc.ProfilePictureWidth()-10, rsc.BodyPanelHeight()/16);
+        lblAddress.setBounds(0, (rsc.BodyPanelHeight()*3)/8, rsc.ProfilePictureWidth()-10, rsc.bcTextHeight());
         lblAddress.setHorizontalAlignment(JLabel.RIGHT);
         lblAddress.setVerticalAlignment(JLabel.CENTER);
         
@@ -182,7 +182,7 @@ public class ProfilePageContent extends JPanel {
         addressOutput.setText(userAddress);
         addressOutput.setFont(rsc.MainFont());
         addressOutput.setForeground(rsc.PrimaryTextColor());
-        addressOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*3)/8, (rsc.ProfilePictureWidth()*2)-10, rsc.BodyPanelHeight()/16);
+        addressOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*3)/8, (rsc.ProfilePictureWidth()*2)-10, rsc.bcTextHeight());
         addressOutput.setHorizontalAlignment(JLabel.LEFT);
         addressOutput.setVerticalAlignment(JLabel.CENTER);
         // ********************* Address ********************* //
@@ -194,7 +194,7 @@ public class ProfilePageContent extends JPanel {
         designationOutput.setForeground(rsc.PrimaryTextColor());
         designationOutput.setOpaque(true);
         designationOutput.setBackground(rsc.SecondaryColor());
-        designationOutput.setBounds(rsc.ProfilePictureWidth()*3, rsc.ProfilePictureHeight(), rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16);
+        designationOutput.setBounds(rsc.ProfilePictureWidth()*3, rsc.ProfilePictureHeight(), rsc.ProfilePictureWidth(), rsc.bcTextHeight());
         designationOutput.setHorizontalAlignment(JLabel.CENTER);
         designationOutput.setVerticalAlignment(JLabel.CENTER);
         

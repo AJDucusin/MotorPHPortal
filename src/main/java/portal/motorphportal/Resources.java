@@ -89,34 +89,40 @@ public class Resources
     
     
     
-    public int ProfileVWidthPadding(){
+    public int BodyContentVWidthPadding(){
         int profileVWidthPadding = (int) ((fullScreenHeight/100)*5);
         return profileVWidthPadding;
     }
     
-    public int ProfileVHeightPadding(){
+    public int BodyContentVHeightPadding(){
         int profileVHeightPadding = (int) (fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10)));
         return profileVHeightPadding;
     }
     
-    public int ProfileHWidthPadding(){
+    public int BodyContentHWidthPadding(){
         int profileHorizontalPadding = (int) (fullScreenWidth - ((fullScreenWidth / ratio)/4));
         return profileHorizontalPadding;
     }
     
-    public int ProfileHHeightPadding(){
+    public int BodyContentHHeightPadding(){
         int profileHHeightPadding = (int) ((fullScreenHeight/100)*5);
         return profileHHeightPadding;
     }
     
-    public int ProfilePageWidth() {
+    public int BodyContentPageWidth() {
         int profilePageWidth = (int) (fullScreenWidth - ((fullScreenWidth / ratio)/4)) - ((fullScreenHeight/100)*5);
         return profilePageWidth;
     }
     
-    public int ProfilePageHeight() {
+    public int BodyContentPageHeight() {
         int profilePageHeight = (int) (fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10))) - ((fullScreenHeight/100)*5);
         return profilePageHeight;
+    }
+    
+    
+    public int bcTextHeight(){
+        int bodyContentTextHeight = (int) (fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10)))/16;
+        return bodyContentTextHeight;
     }
     
     
