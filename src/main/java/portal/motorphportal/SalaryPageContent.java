@@ -16,20 +16,25 @@ public class SalaryPageContent extends JPanel implements ActionListener {
     
     private String imagePath = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\img\\";
     
-    private JPanel clockPanel;
+    private String userIdInput;
+    
+    private JPanel clockPanel, salaryPageReport;
     private JLabel lblSearch, lblFrom, lblTo, lblOutputFrom, lblOutputTo;
     private JTextField TFfrom;
     private JCalendar salaryCalendar;
-    private JButton getDateButton, BTNsetFromDate, btnGetFromDate, btnGetToDate;
+    private JButton getDateButton, BTNsetFromDate, btnGetFromDate, btnGetToDate, btnGeneratePayslip;
     
     Resources rsc = new Resources();
-    DBoperation DBops = new DBoperation();
+    UserService UserSVC = new UserService();
     
-    SalaryPageContent(String usernameInput, String passwordInput) {
-        initialize();
+    public SalaryPageContent(String userId) {
+        this.userIdInput = userId;
+        
+        initialize(userId);
     }
     
-    public void initialize() {
+    public void initialize(String userId) {
+        
         
         this.setBackground(rsc.PrimaryColor());
         this.setSize(rsc.BodyContentPageWidth(), rsc.BodyContentPageHeight());
@@ -70,8 +75,8 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         
         lblFrom = new JLabel();
         lblFrom.setText("From: ");
-        //lblFrom.setOpaque(true);
-        //lblFrom.setBackground(Color.ORANGE);
+        lblFrom.setOpaque(true);
+        lblFrom.setBackground(Color.ORANGE);
         lblFrom.setFont(rsc.MainFont());
         lblFrom.setForeground(rsc.PrimaryTextColor());
         lblFrom.setBounds(0, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
@@ -79,7 +84,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         lblFrom.setVerticalAlignment(JLabel.CENTER);
         
         lblOutputFrom = new JLabel();
-        lblOutputFrom.setText("<date>");
+        lblOutputFrom.setText("");
         //lblOutputFrom.setOpaque(true);
         //lblOutputFrom.setBackground(Color.BLUE);
         lblOutputFrom.setFont(rsc.MainFont());
@@ -87,6 +92,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         lblOutputFrom.setBounds(rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()-(rsc.ProfilePictureWidth()/4), rsc.bcTextHeight());
         lblOutputFrom.setHorizontalAlignment(JLabel.CENTER);
         lblOutputFrom.setVerticalAlignment(JLabel.CENTER);
+        String selectedFromDate = lblOutputFrom.getText();
         
         btnGetFromDate = new JButton("Set");
         btnGetFromDate.addActionListener(this);
@@ -117,7 +123,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         lblTo.setVerticalAlignment(JLabel.CENTER);
         
         lblOutputTo = new JLabel();
-        lblOutputTo.setText("<date>");
+        lblOutputTo.setText("");
         //lblOutputTo.setOpaque(true);
         //lblOutputTo.setBackground(Color.BLUE);
         lblOutputTo.setFont(rsc.MainFont());
@@ -136,6 +142,26 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         btnGetToDate.setBounds(((rsc.ProfilePictureWidth()*3)/2+(rsc.ProfilePictureWidth()/4))+rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
         
         
+        btnGeneratePayslip = new JButton("Generate Report");
+        btnGeneratePayslip.addActionListener(this);
+        btnGeneratePayslip.setBackground(rsc.SecondaryColor());
+        btnGeneratePayslip.setForeground(rsc.PrimaryTextColor());
+        //btnGetToDate.setBorder(null);
+        btnGeneratePayslip.setFont(rsc.SecondaryFont());
+        btnGeneratePayslip.setFocusable(false);
+        btnGeneratePayslip.setBounds(0, (rsc.BodyPanelHeight()/16)*2, rsc.bcTextWidth(), rsc.bcTextHeight());
+        
+        
+        
+        
+        // ********** Pages and Contents ********** //
+        salaryPageReport = new SalaryPageReport(userId, lblOutputFrom.getText(), lblOutputTo.getText());
+        String salo = "";
+        // ********** Pages and Contents ********** //
+        
+        
+        
+        
         this.add(salaryCalendar);
         this.add(lblSearch);
         this.add(lblFrom);
@@ -145,7 +171,16 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         this.add(lblTo);
         this.add(lblOutputTo);
         this.add(btnGetToDate);
+        this.add(btnGeneratePayslip);
         //this.add(getDateButton);
+        
+        this.add(salaryPageReport);
+        
+        HideAllPagesAndContent();
+    }
+    
+    public void HideAllPagesAndContent(){
+        salaryPageReport.setVisible(false);
     }
 
     @Override
@@ -153,18 +188,24 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         
         if(e.getSource() == btnGetFromDate){
             
+            HideAllPagesAndContent();
             Date selectedDate = salaryCalendar.getDate();
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd HH:mm");
+            //SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd HH:mm");
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
             String formattedDate = dateFormatter.format(selectedDate);
             lblOutputFrom.setText(formattedDate);
 
         } else if(e.getSource()==btnGetToDate){
             
+            HideAllPagesAndContent();
             Date selectedDate = salaryCalendar.getDate();
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd HH:mm");
+            //SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd HH:mm");
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
             String formattedDate = dateFormatter.format(selectedDate);
             lblOutputTo.setText(formattedDate);
             
+        } else if(e.getSource()==btnGeneratePayslip){
+            salaryPageReport.setVisible(true);
         }
         
     }

@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import portal.motorphportal.DBoperation;
 
 
 public class LoginPage extends JFrame implements ActionListener
@@ -27,7 +26,7 @@ public class LoginPage extends JFrame implements ActionListener
     private JPanel loginFocusPanel, loginButtonContainer, usernameTFContainer, passwordTFContainer;
     private Color primaryColor, secondaryColor, accentColor, primaryTextColor, secondaryTextColor, inputTextColor;
     private Font headerFont, mainFont, secondaryFont;
-    DBoperation DBops = new DBoperation();
+    UserService UserSVC = new UserService();
     
     LoginPage()
     {
@@ -179,7 +178,8 @@ public class LoginPage extends JFrame implements ActionListener
             char[] passwordPerParts = passwordTF.getPassword();
             String loginPassword = new String(passwordPerParts);
             
-            boolean loginResult = DBops.LoginUser(loginUsername, loginPassword);
+            //boolean loginResult = DBops.LoginUser(loginUsername, loginPassword);
+            boolean loginResult = UserSVC.LoginUser(loginUsername, loginPassword);
             
             if(loginResult == true) {
                 MainFrame mainFrame = new MainFrame(loginUsername, loginPassword);

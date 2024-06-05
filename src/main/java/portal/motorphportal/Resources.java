@@ -120,6 +120,11 @@ public class Resources
     }
     
     
+    public int bcTextWidth(){
+        int bodyContentTextWidth = (int) ((fullScreenWidth - ((fullScreenWidth / ratio)/4)) - ((fullScreenHeight/100)*5))/8;
+        return bodyContentTextWidth;
+    }
+    
     public int bcTextHeight(){
         int bodyContentTextHeight = (int) (fullScreenHeight - ((((fullScreenHeight/100)*5)*3)+((fullScreenHeight/100)*10)))/16;
         return bodyContentTextHeight;

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class UpdateDeleteProfile extends JPanel {
     
     Resources rsc = new Resources();
-    DBoperation DBops = new DBoperation();
+    UserService UserSVC = new UserService();
     
     UpdateDeleteProfile(){
         initialize();

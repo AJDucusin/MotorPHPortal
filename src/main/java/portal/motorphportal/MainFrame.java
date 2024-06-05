@@ -1,11 +1,14 @@
 package portal.motorphportal;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,25 +21,40 @@ public class MainFrame extends JFrame implements ActionListener {
     
     private JPanel loginPanel, sideBar, headerPanel, bodyPanel, footerPanel;
     private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton;
-    private JLabel lblHeader, lblFooter;
+    private JLabel lblHeader, lblFooter, lblIntroduction, lblIntroPicture;
+    private ImageIcon bannerPicture, scaledBannerPicture;
     
     private JPanel profilePageContent, salaryPageContent;
 
     Resources rsc = new Resources();
+    UserService UserSVC = new UserService();
     
     
     public MainFrame(String username, String password) {
         this.username = username;
         this.password = password;
         
-        initialize();
+        initialize(username, password);
     }
 
-    public void initialize()
+    public void initialize(String username, String password)
     {
         // ********** Pages and Contents ********** //
+        User user = UserSVC.LoadUsersData(username, password);
+        String userID = String.valueOf(user.getId());
+        //imageCount = userID;
+        String userLastName = user.getLastName();
+        String userFirstName = user.getFirstName();
+        String userSss = user.getSss();
+        String userPhilhealth = user.getPhilhealth();
+        String userTIN = user.getTin();
+        String userPagibig = user.getPagibig();
+        String userDesignation = user.getDesignation();
+        String userAddress = user.getAddress();
+        
+        
         profilePageContent = new ProfilePageContent(username, password);
-        salaryPageContent = new SalaryPageContent(username, password);
+        salaryPageContent = new SalaryPageContent(userID);
         // ********** Pages and Contents ********** //
         
         // ********** Mouse Function ********** //
@@ -102,6 +120,28 @@ public class MainFrame extends JFrame implements ActionListener {
         lblHeader.setForeground(rsc.PrimaryTextColor());
         lblHeader.setHorizontalAlignment(JLabel.CENTER); //Original
         lblHeader.setVerticalAlignment(JLabel.CENTER); //Original
+        
+        
+        
+        bannerPicture = new ImageIcon("C:\\Users\\ducus\\Desktop\\MotorPHPortal\\img\\banner.png");
+        Image originalImage = bannerPicture.getImage();
+        Image scaledImage = originalImage.getScaledInstance(rsc.ProfilePictureWidth(), rsc.ProfilePictureHeight(), Image.SCALE_DEFAULT);
+        scaledBannerPicture = new ImageIcon(scaledImage);
+        
+        lblIntroPicture = new JLabel();
+        lblIntroPicture.setIcon(bannerPicture);
+        lblIntroPicture.setBounds(rsc.SideBarWidth()+5, rsc.HeaderPanelHeight(), rsc.BodyPanelWidth()-10, rsc.BodyPanelHeight()/4);
+        lblIntroPicture.setHorizontalAlignment(JLabel.CENTER);
+        lblIntroPicture.setVerticalAlignment(JLabel.BOTTOM);
+        
+        lblIntroduction = new JLabel();
+        lblIntroduction.setText("<html><p align='center'>Overview<br/><br/>MotorPH started as an online company but now plans to expand operations by opening multiple physical branches in the Philippines. We will start by opening a physical headquarters to centralize their services and ensure that all other sites can communicate with each other.</p></html>");
+        lblIntroduction.setFont(rsc.HeaderFont());
+        lblIntroduction.setForeground(rsc.PrimaryTextColor());
+        lblIntroduction.setBounds(rsc.SideBarWidth()+5, (rsc.BodyPanelHeight()/4)+100, rsc.BodyPanelWidth()-10, rsc.BodyPanelHeight()/2);
+        lblIntroduction.setHorizontalAlignment(JLabel.CENTER); //Original
+        lblIntroduction.setVerticalAlignment(JLabel.CENTER); //Original
+        
         
         lblFooter = new JLabel();
         lblFooter.setText("Terms of Service | Privacy Policy | © 2023-2024 MMDC MO-IT103. All Rights Reserved.");
@@ -187,18 +227,24 @@ public class MainFrame extends JFrame implements ActionListener {
         sideBar.add(salaryButton);
         sideBar.add(exitButton);
         this.add(headerPanel);
+        this.add(lblIntroduction);
+        this.add(lblIntroPicture);
         this.add(bodyPanel);
         this.add(footerPanel);
         this.add(sideBar);
         this.setVisible(true);
         
         HideAllPagesAndContent();
+        lblIntroduction.setVisible(true);
+        lblIntroPicture.setVisible(true);
     }
     
     
     public void HideAllPagesAndContent(){
         profilePageContent.setVisible(false);
         salaryPageContent.setVisible(false);
+        lblIntroduction.setVisible(false);
+        lblIntroPicture.setVisible(false);
     }
     
     public void ButtonDefaultColor() {
@@ -223,6 +269,8 @@ public class MainFrame extends JFrame implements ActionListener {
             ButtonDefaultColor();
             headerButton.setBackground(rsc.PrimaryColor());
             lblHeader.setText("Welcome to MotorPH Dashboard Portal");
+            lblIntroduction.setVisible(true);
+            lblIntroPicture.setVisible(true);
         }
         else if(e.getSource()==timeInOutButton)
         {

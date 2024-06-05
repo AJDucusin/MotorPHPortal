@@ -17,7 +17,7 @@ public class ProfilePageContent extends JPanel {
     private ImageIcon profilePicture, scaledProfilePicture;
     
     Resources rsc = new Resources();
-    DBoperation DBops = new DBoperation();
+    UserService UserSVC = new UserService();
     
     ProfilePageContent(String usernameInput, String passwordInput){
         initialize(usernameInput, passwordInput);
@@ -25,7 +25,7 @@ public class ProfilePageContent extends JPanel {
     
     public void initialize(String usernameInput, String passwordInput){
         
-        User user = DBops.LoadUsersData(usernameInput, passwordInput);
+        User user = UserSVC.LoadUsersData(usernameInput, passwordInput);
         String userID = String.valueOf(user.getId());
         imageCount = userID;
         String userLastName = user.getLastName();

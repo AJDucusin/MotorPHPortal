@@ -1,5 +1,25 @@
-userID,date,time_in,lunch_in,lunch_out,time_out
-1,2024,,,,
-1,,,,,
-1,,,,,
-1,,,,,
+userID,last_name,first_name,salary_per_hour,date,sched_in,sched_out,time_in,lunch_in,lunch_out,time_out
+1,Garcia,Manuel III,535.71,20240501,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240502,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240503,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240504,res,res,res,res,res,res
+1,Garcia,Manuel III,535.71,20240505,res,res,res,res,res,res
+1,Garcia,Manuel III,535.71,20240506,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240507,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240508,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240509,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240510,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240511,res,res,res,res,res,res
+1,Garcia,Manuel III,535.71,20240512,res,res,res,res,res,res
+1,Garcia,Manuel III,535.71,20240513,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240514,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240515,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240516,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240517,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240518,res,res,res,res,res,res
+1,Garcia,Manuel III,535.71,20240519,res,res,res,res,res,res
+1,Garcia,Manuel III,535.71,20240520,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240521,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240522,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240523,8:00,17:00,8:00,12:00,13:00,17:00
+1,Garcia,Manuel III,535.71,20240524,8:00,17:00,8:00,12:00,13:00,17:00

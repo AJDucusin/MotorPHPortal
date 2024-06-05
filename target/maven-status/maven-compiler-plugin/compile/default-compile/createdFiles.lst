@@ -1,11 +1,13 @@
+portal\motorphportal\HRService.class
 portal\motorphportal\User.class
-portal\motorphportal\TestPanel.class
 portal\motorphportal\MainFrame$1.class
+portal\motorphportal\SalaryPageReport.class
+portal\motorphportal\UpdateDeleteProfile.class
+portal\motorphportal\MotorPHPortal.class
+portal\motorphportal\HR.class
 portal\motorphportal\MainFrame.class
 portal\motorphportal\LoginPage.class
-portal\motorphportal\UpdateDeleteProfile.class
+portal\motorphportal\UserService.class
 portal\motorphportal\SalaryPageContent.class
-portal\motorphportal\DBoperation.class
-portal\motorphportal\MotorPHPortal.class
 portal\motorphportal\Resources.class
 portal\motorphportal\ProfilePageContent.class
