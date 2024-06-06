@@ -20,11 +20,11 @@ public class MainFrame extends JFrame implements ActionListener {
     private String password;
     
     private JPanel loginPanel, sideBar, headerPanel, bodyPanel, footerPanel;
-    private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton;
+    private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton, updateDeleteButton;
     private JLabel lblHeader, lblFooter, lblIntroduction, lblIntroPicture;
     private ImageIcon bannerPicture, scaledBannerPicture;
     
-    private JPanel profilePageContent, salaryPageContent;
+    private JPanel profilePageContent, salaryPageContent, updateDeleteProfile;
 
     Resources rsc = new Resources();
     UserService UserSVC = new UserService();
@@ -55,6 +55,7 @@ public class MainFrame extends JFrame implements ActionListener {
         
         profilePageContent = new ProfilePageContent(username, password);
         salaryPageContent = new SalaryPageContent(userID);
+        updateDeleteProfile = new UpdateDeleteProfile();
         // ********** Pages and Contents ********** //
         
         // ********** Mouse Function ********** //
@@ -165,7 +166,7 @@ public class MainFrame extends JFrame implements ActionListener {
         timeInOutButton.addActionListener(this);
         timeInOutButton.setBackground(rsc.SecondaryColor());
         timeInOutButton.setForeground(rsc.PrimaryTextColor());
-        timeInOutButton.setFont(rsc.MainFont());
+        timeInOutButton.setFont(rsc.SecondaryFont());
         timeInOutButton.setBorder(null);
         timeInOutButton.setFocusable(false);
         timeInOutButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*10), rsc.NavButtonWidth(), rsc.NavButtonHeight());
@@ -175,7 +176,7 @@ public class MainFrame extends JFrame implements ActionListener {
         profileButton.addActionListener(this);
         profileButton.setBackground(rsc.SecondaryColor());
         profileButton.setForeground(rsc.PrimaryTextColor());
-        profileButton.setFont(rsc.MainFont());
+        profileButton.setFont(rsc.SecondaryFont());
         profileButton.setBorder(null);
         profileButton.setFocusable(false);
         profileButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*9), rsc.NavButtonWidth(), rsc.NavButtonHeight());
@@ -185,7 +186,7 @@ public class MainFrame extends JFrame implements ActionListener {
         timeButton.addActionListener(this);
         timeButton.setBackground(rsc.SecondaryColor());
         timeButton.setForeground(rsc.PrimaryTextColor());
-        timeButton.setFont(rsc.MainFont());
+        timeButton.setFont(rsc.SecondaryFont());
         timeButton.setBorder(null);
         timeButton.setFocusable(false);
         timeButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*8), rsc.NavButtonWidth(), rsc.NavButtonHeight());
@@ -195,17 +196,27 @@ public class MainFrame extends JFrame implements ActionListener {
         salaryButton.addActionListener(this);
         salaryButton.setBackground(rsc.SecondaryColor());
         salaryButton.setForeground(rsc.PrimaryTextColor());
-        salaryButton.setFont(rsc.MainFont());
+        salaryButton.setFont(rsc.SecondaryFont());
         salaryButton.setBorder(null);
         salaryButton.setFocusable(false);
         salaryButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*7), rsc.NavButtonWidth(), rsc.NavButtonHeight());
         salaryButton.addMouseListener(handPointer);
         
+        updateDeleteButton = new JButton("<html><p align='center'>Update or Delete Profile</p></html>");
+        updateDeleteButton.addActionListener(this);
+        updateDeleteButton.setBackground(rsc.SecondaryColor());
+        updateDeleteButton.setForeground(rsc.PrimaryTextColor());
+        updateDeleteButton.setFont(rsc.SecondaryFont());
+        updateDeleteButton.setBorder(null);
+        updateDeleteButton.setFocusable(false);
+        updateDeleteButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*6), rsc.NavButtonWidth(), rsc.NavButtonHeight());
+        updateDeleteButton.addMouseListener(handPointer);
+        
         exitButton = new JButton("Exit Portal");
         exitButton.addActionListener(this);
         exitButton.setBackground(rsc.SecondaryColor());
         exitButton.setForeground(rsc.PrimaryTextColor());
-        exitButton.setFont(rsc.MainFont());
+        exitButton.setFont(rsc.SecondaryFont());
         exitButton.setBorder(null);
         exitButton.setFocusable(false);
         exitButton.setBounds(0, rsc.SideBarHeight()-rsc.NavButtonHeight(), rsc.NavButtonWidth(), rsc.NavButtonHeight());
@@ -217,6 +228,7 @@ public class MainFrame extends JFrame implements ActionListener {
         
         bodyPanel.add(profilePageContent);
         bodyPanel.add(salaryPageContent);
+        bodyPanel.add(updateDeleteProfile);
         
         footerPanel.add(lblFooter);
         
@@ -225,6 +237,7 @@ public class MainFrame extends JFrame implements ActionListener {
         sideBar.add(profileButton);
         sideBar.add(timeButton);
         sideBar.add(salaryButton);
+        sideBar.add(updateDeleteButton);
         sideBar.add(exitButton);
         this.add(headerPanel);
         this.add(lblIntroduction);
@@ -245,6 +258,7 @@ public class MainFrame extends JFrame implements ActionListener {
         salaryPageContent.setVisible(false);
         lblIntroduction.setVisible(false);
         lblIntroPicture.setVisible(false);
+        updateDeleteProfile.setVisible(false);
     }
     
     public void ButtonDefaultColor() {
@@ -253,6 +267,7 @@ public class MainFrame extends JFrame implements ActionListener {
         profileButton.setBackground(rsc.SecondaryColor());
         timeButton.setBackground(rsc.SecondaryColor());
         salaryButton.setBackground(rsc.SecondaryColor());
+        updateDeleteButton.setBackground(rsc.SecondaryColor());
     }
     
     
@@ -301,6 +316,13 @@ public class MainFrame extends JFrame implements ActionListener {
             salaryButton.setBackground(rsc.PrimaryColor());
             salaryPageContent.setVisible(true);
             lblHeader.setText("View Salary Page");
+        }
+        else if(e.getSource()==updateDeleteButton){
+            HideAllPagesAndContent();
+            ButtonDefaultColor();
+            updateDeleteButton.setBackground(rsc.PrimaryColor());
+            updateDeleteProfile.setVisible(true);
+            lblHeader.setText("Update or Delete User's Profile");
         }
     }
 }

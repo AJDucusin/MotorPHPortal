@@ -179,7 +179,7 @@ public class ProfilePageContent extends JPanel {
         lblAddress.setVerticalAlignment(JLabel.CENTER);
         
         addressOutput = new JLabel();
-        addressOutput.setText(userAddress);
+        addressOutput.setText("<html>" + userAddress.replaceAll("\n", "<br>") + "</html>");
         addressOutput.setFont(rsc.MainFont());
         addressOutput.setForeground(rsc.PrimaryTextColor());
         addressOutput.setBounds(rsc.ProfilePictureWidth()+10, (rsc.BodyPanelHeight()*3)/8, (rsc.ProfilePictureWidth()*2)-10, rsc.bcTextHeight());

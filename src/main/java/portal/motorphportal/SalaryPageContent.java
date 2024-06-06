@@ -67,7 +67,7 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         //lblSearch.setBackground(Color.BLUE);
         lblSearch.setFont(rsc.MainFont());
         lblSearch.setForeground(rsc.PrimaryTextColor());
-        lblSearch.setBounds(0, 0, rsc.ProfilePictureWidth()*3, rsc.bcTextHeight());
+        lblSearch.setBounds(0, 0, rsc.bcTextWidth(), rsc.bcTextHeight());
         lblSearch.setHorizontalAlignment(JLabel.CENTER);
         lblSearch.setVerticalAlignment(JLabel.CENTER);
         

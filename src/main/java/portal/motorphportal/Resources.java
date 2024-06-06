@@ -185,6 +185,8 @@ public class Resources
         return new Font("Sans Serif",Font.PLAIN,14);
     }
     
-    
+    public Font NavBarFont(){
+        return new Font("Sans Serif",Font.PLAIN,12);
+    }
     
 }

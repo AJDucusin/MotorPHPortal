@@ -67,9 +67,7 @@ public class LoginPage extends JFrame implements ActionListener
         mainFont = new Font("Sans Serif",Font.PLAIN,16);
         secondaryFont = new Font("Sans Serif",Font.PLAIN,14);
         // ********** Dimensions, Colors, Fonts ********** //
-        
-        
-        
+
         
         this.setTitle("Login Page");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -151,10 +149,6 @@ public class LoginPage extends JFrame implements ActionListener
         
         
         
-        
-        
-        
-        
         usernameTFContainer.add(usernameTF);
         passwordTFContainer.add(passwordTF);
         loginButtonContainer.add(loginButton);
@@ -180,12 +174,13 @@ public class LoginPage extends JFrame implements ActionListener
             
             //boolean loginResult = DBops.LoginUser(loginUsername, loginPassword);
             boolean loginResult = UserSVC.LoginUser(loginUsername, loginPassword);
+            String convertedLogin = String.valueOf(loginResult);
             
             if(loginResult == true) {
                 MainFrame mainFrame = new MainFrame(loginUsername, loginPassword);
                 this.dispose();
             } else {
-                lblLoginMessage.setText("Login failed. Incorrect username or password.");
+                lblLoginMessage.setText(convertedLogin);
                 usernameTF.setText(null);
                 passwordTF.setText(null);
             }

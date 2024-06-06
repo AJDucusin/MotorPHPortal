@@ -7,6 +7,7 @@ portal\motorphportal\MotorPHPortal.class
 portal\motorphportal\HR.class
 portal\motorphportal\MainFrame.class
 portal\motorphportal\LoginPage.class
+portal\motorphportal\Prompt.class
 portal\motorphportal\UserService.class
 portal\motorphportal\SalaryPageContent.class
 portal\motorphportal\Resources.class

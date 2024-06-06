@@ -29,7 +29,8 @@ public class SalaryPageReport extends JPanel {
         this.setLayout(null);
         
         HRService hrSVC = new HRService();
-        double salary = hrSVC.ComputeSalary(userID, fromDate, toDate);
+        //double salary = hrSVC.ComputeSalary(userID, fromDate, toDate);
+        double salary = hrSVC.ComputeSalary(userID, "20240501", "20240524");
         String convertedSalary = String.valueOf(salary);
         
         
