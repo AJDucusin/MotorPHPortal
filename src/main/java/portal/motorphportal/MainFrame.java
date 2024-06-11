@@ -1,7 +1,6 @@
 package portal.motorphportal;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -20,7 +19,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private String password;
     
     private JPanel loginPanel, sideBar, headerPanel, bodyPanel, footerPanel;
-    private JButton loginButton, headerButton, timeInOutButton, profileButton, timeButton, salaryButton, exitButton, updateDeleteButton;
+    private JButton loginButton, headerButton, timeInOutButton, profileButton, btnSchedule, salaryButton, exitButton, updateDeleteButton;
     private JLabel lblHeader, lblFooter, lblIntroduction, lblIntroPicture;
     private ImageIcon bannerPicture, scaledBannerPicture;
     
@@ -65,7 +64,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 headerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 timeInOutButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 profileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                timeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnSchedule.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 salaryButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 exitButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
@@ -74,7 +73,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 headerButton.setCursor(Cursor.getDefaultCursor());
                 timeInOutButton.setCursor(Cursor.getDefaultCursor());
                 profileButton.setCursor(Cursor.getDefaultCursor());
-                timeButton.setCursor(Cursor.getDefaultCursor());
+                btnSchedule.setCursor(Cursor.getDefaultCursor());
                 salaryButton.setCursor(Cursor.getDefaultCursor());
                 exitButton.setCursor(Cursor.getDefaultCursor());
             }
@@ -118,7 +117,7 @@ public class MainFrame extends JFrame implements ActionListener {
         lblHeader = new JLabel();
         lblHeader.setText("Welcome to MotorPH Dashboard Portal");
         lblHeader.setFont(rsc.HeaderFont2());
-        lblHeader.setForeground(rsc.PrimaryTextColor());
+        lblHeader.setForeground(rsc.AccentColor());
         lblHeader.setHorizontalAlignment(JLabel.CENTER); //Original
         lblHeader.setVerticalAlignment(JLabel.CENTER); //Original
         
@@ -152,7 +151,7 @@ public class MainFrame extends JFrame implements ActionListener {
         lblFooter.setVerticalAlignment(JLabel.CENTER);
         
         
-        headerButton = new JButton("Motor PH");
+        headerButton = new JButton("HOME");
         headerButton.addActionListener(this);
         headerButton.setBackground(rsc.PrimaryColor());
         headerButton.setForeground(rsc.PrimaryTextColor());
@@ -182,15 +181,15 @@ public class MainFrame extends JFrame implements ActionListener {
         profileButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*9), rsc.NavButtonWidth(), rsc.NavButtonHeight());
         profileButton.addMouseListener(handPointer);
         
-        timeButton = new JButton("View Time Logs");
-        timeButton.addActionListener(this);
-        timeButton.setBackground(rsc.SecondaryColor());
-        timeButton.setForeground(rsc.PrimaryTextColor());
-        timeButton.setFont(rsc.SecondaryFont());
-        timeButton.setBorder(null);
-        timeButton.setFocusable(false);
-        timeButton.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*8), rsc.NavButtonWidth(), rsc.NavButtonHeight());
-        timeButton.addMouseListener(handPointer);
+        btnSchedule = new JButton("Schedule");
+        btnSchedule.addActionListener(this);
+        btnSchedule.setBackground(rsc.SecondaryColor());
+        btnSchedule.setForeground(rsc.PrimaryTextColor());
+        btnSchedule.setFont(rsc.SecondaryFont());
+        btnSchedule.setBorder(null);
+        btnSchedule.setFocusable(false);
+        btnSchedule.setBounds(0, rsc.SideBarHeight()-(rsc.NavButtonHeight()*8), rsc.NavButtonWidth(), rsc.NavButtonHeight());
+        btnSchedule.addMouseListener(handPointer);
         
         salaryButton = new JButton("View Salary");
         salaryButton.addActionListener(this);
@@ -235,7 +234,7 @@ public class MainFrame extends JFrame implements ActionListener {
         sideBar.add(headerButton);
         sideBar.add(timeInOutButton);
         sideBar.add(profileButton);
-        sideBar.add(timeButton);
+        sideBar.add(btnSchedule);
         sideBar.add(salaryButton);
         sideBar.add(updateDeleteButton);
         sideBar.add(exitButton);
@@ -248,6 +247,7 @@ public class MainFrame extends JFrame implements ActionListener {
         this.setVisible(true);
         
         HideAllPagesAndContent();
+        //DefaultForeGround();
         lblIntroduction.setVisible(true);
         lblIntroPicture.setVisible(true);
     }
@@ -261,11 +261,22 @@ public class MainFrame extends JFrame implements ActionListener {
         updateDeleteProfile.setVisible(false);
     }
     
+    /*
+    public void DefaultForeGround() {
+        headerButton.setForeground(rsc.PrimaryTextColor());
+        timeInOutButton.setForeground(rsc.PrimaryTextColor());
+        profileButton.setForeground(rsc.PrimaryTextColor());
+        timeButton.setForeground(rsc.PrimaryTextColor());
+        salaryButton.setForeground(rsc.PrimaryTextColor());
+        updateDeleteButton.setForeground(rsc.PrimaryTextColor());
+    }
+    */
+    
     public void ButtonDefaultColor() {
         headerButton.setBackground(rsc.SecondaryColor());
         timeInOutButton.setBackground(rsc.SecondaryColor());
         profileButton.setBackground(rsc.SecondaryColor());
-        timeButton.setBackground(rsc.SecondaryColor());
+        btnSchedule.setBackground(rsc.SecondaryColor());
         salaryButton.setBackground(rsc.SecondaryColor());
         updateDeleteButton.setBackground(rsc.SecondaryColor());
     }
@@ -282,6 +293,7 @@ public class MainFrame extends JFrame implements ActionListener {
         {
             HideAllPagesAndContent();
             ButtonDefaultColor();
+            //DefaultForeGround();
             headerButton.setBackground(rsc.PrimaryColor());
             lblHeader.setText("Welcome to MotorPH Dashboard Portal");
             lblIntroduction.setVisible(true);
@@ -291,38 +303,48 @@ public class MainFrame extends JFrame implements ActionListener {
         {
             HideAllPagesAndContent();
             ButtonDefaultColor();
+            //DefaultForeGround();
             timeInOutButton.setBackground(rsc.PrimaryColor());
             lblHeader.setText("Time-In Time-Out Page");
+            //timeInOutButton.setForeground(rsc.AccentColor());
         }
         else if(e.getSource()==profileButton)
         {
             HideAllPagesAndContent();
             ButtonDefaultColor();
+            //DefaultForeGround();
             profileButton.setBackground(rsc.PrimaryColor());
-            profilePageContent.setVisible(true);
             lblHeader.setText("Profile Page");
+            //profileButton.setForeground(rsc.AccentColor());
+            profilePageContent.setVisible(true);
         }
-        else if(e.getSource()==timeButton)
+        else if(e.getSource()==btnSchedule)
         {
             HideAllPagesAndContent();
             ButtonDefaultColor();
-            timeButton.setBackground(rsc.PrimaryColor());
-            lblHeader.setText("View Time Logs Page");
+            //DefaultForeGround();
+            btnSchedule.setBackground(rsc.PrimaryColor());
+            lblHeader.setText("View Schedules and Request");
+            //timeButton.setForeground(rsc.AccentColor());
         }
         else if(e.getSource()==salaryButton)
         {
             HideAllPagesAndContent();
             ButtonDefaultColor();
+            //DefaultForeGround();
             salaryButton.setBackground(rsc.PrimaryColor());
-            salaryPageContent.setVisible(true);
             lblHeader.setText("View Salary Page");
+            //salaryButton.setForeground(rsc.AccentColor());
+            salaryPageContent.setVisible(true);
         }
         else if(e.getSource()==updateDeleteButton){
             HideAllPagesAndContent();
             ButtonDefaultColor();
+            //DefaultForeGround();
             updateDeleteButton.setBackground(rsc.PrimaryColor());
-            updateDeleteProfile.setVisible(true);
             lblHeader.setText("Update or Delete User's Profile");
+            //updateDeleteButton.setForeground(rsc.AccentColor());
+            updateDeleteProfile.setVisible(true);
         }
     }
 }

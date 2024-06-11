@@ -153,7 +153,7 @@ public class Resources
     }
     
     public Color AccentColor(){
-        return new Color(0x22303c);
+        return new Color(0xffc857);
     }
     
     public Color PrimaryTextColor(){

@@ -174,13 +174,13 @@ public class LoginPage extends JFrame implements ActionListener
             
             //boolean loginResult = DBops.LoginUser(loginUsername, loginPassword);
             boolean loginResult = UserSVC.LoginUser(loginUsername, loginPassword);
-            String convertedLogin = String.valueOf(loginResult);
+            //String convertedLogin = String.valueOf(loginResult);
             
             if(loginResult == true) {
                 MainFrame mainFrame = new MainFrame(loginUsername, loginPassword);
                 this.dispose();
             } else {
-                lblLoginMessage.setText(convertedLogin);
+                lblLoginMessage.setText("Login failed: invalid username or password.");
                 usernameTF.setText(null);
                 passwordTF.setText(null);
             }
