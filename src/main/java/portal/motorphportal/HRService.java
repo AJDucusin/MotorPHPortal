@@ -449,7 +449,8 @@ public class HRService {
             while((row = csvReader.readNext()) != null) {
                 if(header) {
                     header = false;
-                    filteredSchedule.add(row);
+                   String[] headers = {"Date", "Sched In", "Sched Out"};
+                    filteredSchedule.add(headers);
                     continue;
                 }
                 
@@ -459,7 +460,13 @@ public class HRService {
                 int rowYear = rowDate.getYear()+1900;
                 
                 if(rowUserId.equals(idInput) && rowMonth == month && rowYear == year) {
-                    filteredSchedule.add(row);
+                    
+                    String[] dataToAdd = new String[3];
+                    dataToAdd[0] = row[4];
+                    dataToAdd[1] = row[5];
+                    dataToAdd[2] = row[6];
+                    
+                    filteredSchedule.add(dataToAdd);
                 }
                 
             }
