@@ -59,28 +59,28 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         lblSearch.setText("Search Salary by Date");
         lblSearch.setFont(rsc.MainFont());
         lblSearch.setForeground(rsc.PrimaryTextColor());
-        lblSearch.setBounds(0, 0, rsc.bcTextWidth(), rsc.bcTextHeight());
+        lblSearch.setBounds(0, 0, rsc.bcTextWidth()*7, rsc.bcTextHeight());
         lblSearch.setHorizontalAlignment(JLabel.CENTER);
         lblSearch.setVerticalAlignment(JLabel.CENTER);
         
         
-        
+        // ********** From (Group) ********** //
         lblFrom = new JLabel();
         lblFrom.setText("From: ");
         lblFrom.setOpaque(true);
-        lblFrom.setBackground(Color.ORANGE);
+        lblFrom.setBackground(rsc.PrimaryColor());
         lblFrom.setFont(rsc.MainFont());
         lblFrom.setForeground(rsc.PrimaryTextColor());
-        lblFrom.setBounds(0, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
-        lblFrom.setHorizontalAlignment(JLabel.RIGHT);
+        lblFrom.setBounds(0, rsc.bcTextHeight()*2, rsc.bcTextWidth(), rsc.bcTextHeight());
+        lblFrom.setHorizontalAlignment(JLabel.CENTER);
         lblFrom.setVerticalAlignment(JLabel.CENTER);
         
         lblOutputFrom = new JLabel();
         lblOutputFrom.setText("");
         lblOutputFrom.setFont(rsc.MainFont());
         lblOutputFrom.setForeground(rsc.PrimaryTextColor());
-        lblOutputFrom.setBounds(rsc.ProfilePictureWidth()/4, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()-(rsc.ProfilePictureWidth()/4), rsc.bcTextHeight());
-        lblOutputFrom.setHorizontalAlignment(JLabel.CENTER);
+        lblOutputFrom.setBounds(rsc.bcTextWidth(), rsc.bcTextHeight()*2, rsc.bcTextWidth(), rsc.bcTextHeight());
+        lblOutputFrom.setHorizontalAlignment(JLabel.LEFT);
         lblOutputFrom.setVerticalAlignment(JLabel.CENTER);
         String selectedFromDate = lblOutputFrom.getText();
         
@@ -90,43 +90,44 @@ public class SalaryPageContent extends JPanel implements ActionListener {
         btnGetFromDate.setForeground(rsc.PrimaryTextColor());
         btnGetFromDate.setFont(rsc.SecondaryFont());
         btnGetFromDate.setFocusable(false);
-        btnGetFromDate.setBounds(rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
+        btnGetFromDate.setBounds(rsc.bcTextWidth()*2, rsc.bcTextHeight()*2, rsc.bcTextWidth()/2, rsc.bcTextHeight());
         
         
+        // ********** To (Group) ********** //
         lblTo = new JLabel();
         lblTo.setText("To: ");
         lblTo.setFont(rsc.MainFont());
         lblTo.setForeground(rsc.PrimaryTextColor());
-        lblTo.setBounds((rsc.ProfilePictureWidth()*3)/2, rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
-        lblTo.setHorizontalAlignment(JLabel.RIGHT);
+        lblTo.setBounds(rsc.bcTextWidth()*3, rsc.bcTextHeight()*2, rsc.bcTextWidth(), rsc.bcTextHeight());
+        lblTo.setHorizontalAlignment(JLabel.CENTER);
         lblTo.setVerticalAlignment(JLabel.CENTER);
         
         lblOutputTo = new JLabel();
         lblOutputTo.setText("");
         lblOutputTo.setFont(rsc.MainFont());
         lblOutputTo.setForeground(rsc.PrimaryTextColor());
-        lblOutputTo.setBounds(((rsc.ProfilePictureWidth()*3)/2)+(rsc.ProfilePictureWidth()/4), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()-(rsc.ProfilePictureWidth()/4), rsc.bcTextHeight());
-        lblOutputTo.setHorizontalAlignment(JLabel.CENTER);
+        lblOutputTo.setBounds(rsc.bcTextWidth()*4, rsc.bcTextHeight()*2, rsc.bcTextWidth(), rsc.bcTextHeight());
+        lblOutputTo.setHorizontalAlignment(JLabel.LEFT);
         lblOutputTo.setVerticalAlignment(JLabel.CENTER);
         
         btnGetToDate = new JButton("Set");
         btnGetToDate.addActionListener(this);
         btnGetToDate.setBackground(rsc.SecondaryColor());
         btnGetToDate.setForeground(rsc.PrimaryTextColor());
-        //btnGetToDate.setBorder(null);
         btnGetToDate.setFont(rsc.SecondaryFont());
         btnGetToDate.setFocusable(false);
-        btnGetToDate.setBounds(((rsc.ProfilePictureWidth()*3)/2+(rsc.ProfilePictureWidth()/4))+rsc.ProfilePictureWidth(), rsc.BodyPanelHeight()/16, rsc.ProfilePictureWidth()/4, rsc.bcTextHeight());
+        btnGetToDate.setBounds(rsc.bcTextWidth()*5, rsc.bcTextHeight()*2, rsc.bcTextWidth()/2, rsc.bcTextHeight());
+        
         
         
         btnGeneratePayslip = new JButton("Generate Report");
         btnGeneratePayslip.addActionListener(this);
         btnGeneratePayslip.setBackground(rsc.SecondaryColor());
         btnGeneratePayslip.setForeground(rsc.PrimaryTextColor());
-        //btnGetToDate.setBorder(null);
+        
         btnGeneratePayslip.setFont(rsc.SecondaryFont());
         btnGeneratePayslip.setFocusable(false);
-        btnGeneratePayslip.setBounds(0, (rsc.BodyPanelHeight()/16)*2, rsc.bcTextWidth(), rsc.bcTextHeight());
+        btnGeneratePayslip.setBounds(rsc.bcTextWidth()/2, rsc.bcTextHeight()*4, (rsc.bcTextWidth()*6)/4, rsc.bcTextHeight());
         
         
         // ********** Pages and Contents ********** //

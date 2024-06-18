@@ -23,7 +23,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private JLabel lblHeader, lblFooter, lblIntroduction, lblIntroPicture;
     private ImageIcon bannerPicture, scaledBannerPicture;
     
-    private JPanel profilePageContent, salaryPageContent, updateDeleteProfile;
+    private JPanel profilePageContent, salaryPageContent, updateDeleteProfile, schedulePage;
 
     Resources rsc = new Resources();
     UserService UserSVC = new UserService();
@@ -55,6 +55,7 @@ public class MainFrame extends JFrame implements ActionListener {
         profilePageContent = new ProfilePageContent(username, password);
         salaryPageContent = new SalaryPageContent(userID);
         updateDeleteProfile = new UpdateDeleteProfile();
+        schedulePage = new SchedulePage(userID);
         // ********** Pages and Contents ********** //
         
         // ********** Mouse Function ********** //
@@ -136,7 +137,7 @@ public class MainFrame extends JFrame implements ActionListener {
         
         lblIntroduction = new JLabel();
         lblIntroduction.setText("<html><p align='center'>Overview<br/><br/>MotorPH started as an online company but now plans to expand operations by opening multiple physical branches in the Philippines. We will start by opening a physical headquarters to centralize their services and ensure that all other sites can communicate with each other.</p></html>");
-        lblIntroduction.setFont(rsc.HeaderFont());
+        lblIntroduction.setFont(rsc.MainFont());
         lblIntroduction.setForeground(rsc.PrimaryTextColor());
         lblIntroduction.setBounds(rsc.SideBarWidth()+5, (rsc.BodyPanelHeight()/4)+100, rsc.BodyPanelWidth()-10, rsc.BodyPanelHeight()/2);
         lblIntroduction.setHorizontalAlignment(JLabel.CENTER); //Original
@@ -228,6 +229,7 @@ public class MainFrame extends JFrame implements ActionListener {
         bodyPanel.add(profilePageContent);
         bodyPanel.add(salaryPageContent);
         bodyPanel.add(updateDeleteProfile);
+        bodyPanel.add(schedulePage);
         
         footerPanel.add(lblFooter);
         
@@ -259,6 +261,7 @@ public class MainFrame extends JFrame implements ActionListener {
         lblIntroduction.setVisible(false);
         lblIntroPicture.setVisible(false);
         updateDeleteProfile.setVisible(false);
+        schedulePage.setVisible(false);
     }
     
     /*
@@ -326,6 +329,7 @@ public class MainFrame extends JFrame implements ActionListener {
             btnSchedule.setBackground(rsc.PrimaryColor());
             lblHeader.setText("View Schedules and Request");
             //timeButton.setForeground(rsc.AccentColor());
+            schedulePage.setVisible(true);
         }
         else if(e.getSource()==salaryButton)
         {

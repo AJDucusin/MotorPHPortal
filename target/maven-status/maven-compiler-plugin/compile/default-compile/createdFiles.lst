@@ -1,8 +1,10 @@
 portal\motorphportal\HRService.class
 portal\motorphportal\User.class
+portal\motorphportal\SchedulePageContent.class
 portal\motorphportal\MainFrame$1.class
 portal\motorphportal\SalaryPageReport.class
 portal\motorphportal\UpdateDeleteProfile.class
+portal\motorphportal\SchedulePage.class
 portal\motorphportal\MotorPHPortal.class
 portal\motorphportal\HR.class
 portal\motorphportal\MainFrame.class

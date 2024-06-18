@@ -26,7 +26,7 @@ public class User {
     private String hourly_rate;
     private String philhealth;
     
-    //ito
+    
     public User(int id, String first_name, String last_name, String username, String password, String birthday, String address, String phone, String sss, String tin, String pagibig, String status, String designation, String supervisor, String basic_salary, String rice_subsidy, String phone_allowance, String clothing_allowance, String gross_semi_monthly_rate, String hourly_rate, String philhealth){
         this.id = id;
         this.first_name = first_name;
