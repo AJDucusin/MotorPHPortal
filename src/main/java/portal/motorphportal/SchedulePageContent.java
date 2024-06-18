@@ -29,7 +29,7 @@ public class SchedulePageContent extends JPanel {
     
     public void initialize(String userId, int month, int year) {
         
-        this.setBackground(Color.red);
+        this.setBackground(rsc.PrimaryColor());
         this.setBounds(0, rsc.bcTextHeight()*3, rsc.BodyContentPageWidth(), rsc.BodyContentPageHeight()-(rsc.bcTextHeight()*3));
         this.setLayout(null);
         
@@ -44,7 +44,7 @@ public class SchedulePageContent extends JPanel {
         
         tblSchedule = new JTable(tableModel);
         scrollPane = new JScrollPane(tblSchedule);
-        scrollPane.setBounds(0, 0, rsc.BodyContentPageWidth(), rsc.BodyContentPageHeight()-(rsc.bcTextHeight()*3));
+        scrollPane.setBounds(rsc.BodyContentVWidthPadding(), 0, rsc.BodyContentPageWidth()-rsc.BodyContentVWidthPadding(), rsc.BodyContentPageHeight()-(rsc.bcTextHeight()*3));
         
         String salo = "";
         this.add(scrollPane);

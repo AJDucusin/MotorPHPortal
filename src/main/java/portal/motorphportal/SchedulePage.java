@@ -52,34 +52,43 @@ public class SchedulePage extends JPanel implements ActionListener {
         btnView.setForeground(rsc.PrimaryTextColor());
         btnView.setFont(rsc.SecondaryFont());
         btnView.setFocusable(false);
-        btnView.setBounds(rsc.bcTextWidth()/2, rsc.bcTextHeight()*2, rsc.bcTextWidth()/2, rsc.bcTextHeight());
-        
-        int monthHolder = 6;
-        int yearHolder = 2024;
+        btnView.setBounds(rsc.bcTextWidth()/2, (rsc.bcTextHeight()*2)-5, rsc.bcTextWidth()/2, rsc.bcTextHeight()-10);
         
         
         
-        schedulePageContent = new SchedulePageContent(userId, monthHolder, yearHolder);
+        //schedulePageContent = new SchedulePageContent(userId, monthHolder, yearHolder);
         
         
         this.add(lblScheduleForMonth);
         this.add(monthComboBox);
         this.add(btnView);
-        this.add(schedulePageContent);
+        //this.add(schedulePageContent);
         
         HideAllPagesAndContent();
     }
     
     public void HideAllPagesAndContent() {
-        schedulePageContent.setVisible(false);
+        if(schedulePageContent != null) {
+            schedulePageContent.setVisible(false);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == btnView) {
-            this.add(schedulePageContent);
+            
+            int month = monthComboBox.getSelectedIndex()+1;
+            int year = 2024;
+            
+            if(schedulePageContent != null) {
+                this.remove(schedulePageContent);
+            }
+            
+            schedulePageContent = new SchedulePageContent(userIdInput, month, year);
             schedulePageContent.setVisible(true);
+            this.add(schedulePageContent);
+            
             schedulePageContent.revalidate();
             schedulePageContent.repaint();
         }

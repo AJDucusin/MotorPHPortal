@@ -449,7 +449,7 @@ public class HRService {
             while((row = csvReader.readNext()) != null) {
                 if(header) {
                     header = false;
-                   String[] headers = {"Date", "Sched In", "Sched Out"};
+                    String[] headers = {"Date", "Sched In", "Sched Out"};
                     filteredSchedule.add(headers);
                     continue;
                 }
