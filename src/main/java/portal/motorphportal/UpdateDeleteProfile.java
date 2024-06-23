@@ -237,7 +237,7 @@ public class UpdateDeleteProfile extends JPanel implements ActionListener {
         btnDeleteUser.setForeground(rsc.PrimaryTextColor());
         btnDeleteUser.setFocusable(false);
         btnDeleteUser.setFont(rsc.SecondaryFont());
-        btnDeleteUser.setBounds(0, rsc.BodyContentPageHeight()-rsc.bcTextHeight(), rsc.bcTextWidth(), rsc.bcTextHeight());
+        btnDeleteUser.setBounds((rsc.BodyContentPageWidth()/2)-rsc.bcTextWidth(), rsc.BodyContentPageHeight()-(rsc.bcTextHeight()-5), rsc.bcTextWidth(), rsc.bcTextHeight()-10);
         
         btnEditUser = new JButton("Edit");
         btnEditUser.addActionListener(this);
@@ -245,7 +245,7 @@ public class UpdateDeleteProfile extends JPanel implements ActionListener {
         btnEditUser.setForeground(rsc.PrimaryTextColor());
         btnEditUser.setFocusable(false);
         btnEditUser.setFont(rsc.SecondaryFont());
-        btnEditUser.setBounds(rsc.bcTextWidth(), rsc.BodyContentPageHeight()-rsc.bcTextHeight(), rsc.bcTextWidth(), rsc.bcTextHeight());
+        btnEditUser.setBounds((rsc.BodyContentPageWidth()/2), rsc.BodyContentPageHeight()-(rsc.bcTextHeight()-5), rsc.bcTextWidth(), rsc.bcTextHeight()-10);
         /* ******** Edit Delete Button Ends ******** */
         
         

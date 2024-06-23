@@ -23,7 +23,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private JLabel lblHeader, lblFooter, lblIntroduction, lblIntroPicture;
     private ImageIcon bannerPicture, scaledBannerPicture;
     
-    private JPanel profilePageContent, salaryPageContent, updateDeleteProfile, schedulePage;
+    private JPanel profilePageContent, salaryPageContent, updateDeleteProfile, schedulePage, timeInTimeOutPage;
 
     Resources rsc = new Resources();
     UserService UserSVC = new UserService();
@@ -56,6 +56,7 @@ public class MainFrame extends JFrame implements ActionListener {
         salaryPageContent = new SalaryPageContent(userID);
         updateDeleteProfile = new UpdateDeleteProfile();
         schedulePage = new SchedulePage(userID);
+        timeInTimeOutPage = new TimeInTimeOutPage();
         // ********** Pages and Contents ********** //
         
         // ********** Mouse Function ********** //
@@ -67,6 +68,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 profileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 btnSchedule.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 salaryButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                updateDeleteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 exitButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
         @Override
@@ -76,6 +78,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 profileButton.setCursor(Cursor.getDefaultCursor());
                 btnSchedule.setCursor(Cursor.getDefaultCursor());
                 salaryButton.setCursor(Cursor.getDefaultCursor());
+                updateDeleteButton.setCursor(Cursor.getDefaultCursor());
                 exitButton.setCursor(Cursor.getDefaultCursor());
             }
         };
@@ -226,6 +229,7 @@ public class MainFrame extends JFrame implements ActionListener {
         
         headerPanel.add(lblHeader);
         
+        bodyPanel.add(timeInTimeOutPage);
         bodyPanel.add(profilePageContent);
         bodyPanel.add(salaryPageContent);
         bodyPanel.add(updateDeleteProfile);
@@ -256,6 +260,7 @@ public class MainFrame extends JFrame implements ActionListener {
     
     
     public void HideAllPagesAndContent(){
+        timeInTimeOutPage.setVisible(false);
         profilePageContent.setVisible(false);
         salaryPageContent.setVisible(false);
         lblIntroduction.setVisible(false);
@@ -310,6 +315,7 @@ public class MainFrame extends JFrame implements ActionListener {
             timeInOutButton.setBackground(rsc.PrimaryColor());
             lblHeader.setText("Time-In Time-Out Page");
             //timeInOutButton.setForeground(rsc.AccentColor());
+            timeInTimeOutPage.setVisible(true);
         }
         else if(e.getSource()==profileButton)
         {
