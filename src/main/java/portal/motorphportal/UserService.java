@@ -1,6 +1,6 @@
 package portal.motorphportal;
 
-import com.opencsv.CSVReader;
+import com.opencsv.CSVReader; //<<< ito yung dependecy na ginamit ko sa 'opencsv'. I think kailangan pa syang i-download.
 import com.opencsv.CSVWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+//VVV  gumawa ako ng separate class, ang name ng class 'UserService'
 public class UserService {
     
+    //VVV nag declare ako ng variable sa labas ng mga methods. Itong variable na to is parang global variable, puwedeng i-access ng iba't ibang methods.
     private String file = "C:\\Users\\ducus\\Desktop\\MotorPHPortal\\usersdb.csv";
     
     public User LoadUsersDataByID(String userID){
